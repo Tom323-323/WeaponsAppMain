@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Armor</string>
+    <string name="search_main">Search weapons...</string>
+    <string name="main_menu_title">Weapons World War II</string>
 </resources>
