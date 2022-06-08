@@ -2,6 +2,7 @@
     <string name="app_name">Armor</string>
     <string name="search_main">Search weapons...</string>
     <string name="main_menu_title">Weapons World War II</string>
+    <string name="tap_to_next">TAP TO NEXT...</string>
 
     <array name="splash_screen_text_content">
         <item>"The good people of this world are very far from being satisfied with each other and my arms are the best peacemakers"\n– Samuel Colt</item>
