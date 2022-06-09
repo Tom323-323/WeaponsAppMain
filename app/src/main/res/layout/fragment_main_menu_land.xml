@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
     android:id="@+id/fragment_main_menu"
     tools:context="com.tomaslab.app.presenter.FragmentMainMenu">
 
@@ -43,17 +42,13 @@
                 app:elevation="0dp"
                 app:layout_collapseMode="pin" />
 
-
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-
     </com.google.android.material.appbar.AppBarLayout>
-
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
         android:padding="10dp"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
@@ -75,18 +70,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginStart="15dp"
-                    android:inputType="text"
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/srch_btn_backgr"
                     android:drawableEnd="@drawable/search_btn"
-                    android:hint="@string/search_main"
-                    android:textSize="23sp"
                     android:gravity="center_vertical"
+                    android:hint="@string/search_main"
+                    android:inputType="text"
                     android:paddingStart="20dp"
                     android:paddingEnd="3dp"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/white" />
+                    android:textColorHint="@color/black"
+                    android:textSize="23sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -94,7 +89,7 @@
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/imageView1"
+                        android:id="@+id/im1"
                         android:layout_width="match_parent"
                         android:layout_height="141dp"
                         android:layout_marginTop="20dp"
@@ -106,11 +101,11 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.931"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+                        app:layout_constraintTop_toBottomOf="@+id/im3"
                         app:srcCompat="@drawable/main_menu_img_gb" />
 
                     <ImageButton
-                        android:id="@+id/imageView2"
+                        android:id="@+id/im2"
                         android:layout_width="match_parent"
                         android:layout_height="141dp"
                         android:layout_marginTop="20dp"
@@ -122,7 +117,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.068"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+                        app:layout_constraintTop_toBottomOf="@+id/im3"
                         app:srcCompat="@drawable/main_menu_img_fr" />
                 </LinearLayout>
 
@@ -132,7 +127,7 @@
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/imageView3"
+                        android:id="@+id/im3"
                         android:layout_width="159dp"
                         android:layout_height="141dp"
                         android:layout_marginTop="32dp"
@@ -148,7 +143,7 @@
                         app:srcCompat="@drawable/main_menu_img_ger" />
 
                     <ImageButton
-                        android:id="@+id/imageView4"
+                        android:id="@+id/im4"
                         android:layout_width="159dp"
                         android:layout_height="141dp"
                         android:layout_marginTop="32dp"
@@ -170,7 +165,7 @@
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/imageView5"
+                        android:id="@+id/im5"
                         android:layout_width="159dp"
                         android:layout_height="141dp"
                         android:layout_marginTop="20dp"
@@ -186,7 +181,7 @@
                         app:srcCompat="@drawable/main_menu_img_fin" />
 
                     <ImageButton
-                        android:id="@+id/imageView6"
+                        android:id="@+id/im6"
                         android:layout_width="159dp"
                         android:layout_height="141dp"
                         android:layout_marginTop="20dp"
@@ -198,7 +193,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.068"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView1"
+                        app:layout_constraintTop_toBottomOf="@+id/im1"
                         app:srcCompat="@drawable/main_menu_img_jp" />
                 </LinearLayout>
 
@@ -209,7 +204,7 @@
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/imageView7"
+                        android:id="@+id/im7"
                         android:layout_width="159dp"
                         android:layout_height="141dp"
                         android:layout_marginTop="24dp"
@@ -221,11 +216,11 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.931"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+                        app:layout_constraintTop_toBottomOf="@+id/im6"
                         app:srcCompat="@drawable/main_menu_img_ussr" />
 
                     <ImageButton
-                        android:id="@+id/imageView8"
+                        android:id="@+id/im8"
                         android:layout_width="159dp"
                         android:layout_height="141dp"
                         android:layout_marginTop="24dp"
@@ -237,7 +232,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.064"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+                        app:layout_constraintTop_toBottomOf="@+id/im5"
                         app:srcCompat="@drawable/main_menu_img_it" />
                 </LinearLayout>
 
