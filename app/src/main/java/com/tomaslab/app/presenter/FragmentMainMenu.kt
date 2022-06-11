@@ -8,7 +8,7 @@ import com.tomaslab.app.databinding.FragmentMainMenuLandBinding
 
 class FragmentMainMenu: Fragment(R.layout.fragment_main_menu_land) {
 
-    private lateinit var binding: FragmentMainMenuLandBinding
+    private  var binding: FragmentMainMenuLandBinding? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -17,5 +17,10 @@ class FragmentMainMenu: Fragment(R.layout.fragment_main_menu_land) {
 
 
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }
