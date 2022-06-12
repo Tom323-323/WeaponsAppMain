@@ -42,7 +42,6 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
-
     }
 
 }

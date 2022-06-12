@@ -15,12 +15,6 @@ class FragmentMainMenu: Fragment(R.layout.fragment_main_menu_land), View.OnClick
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMainMenuLandBinding.bind(view)
-
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
     }
 
     override fun onClick(v: View?) {
@@ -39,6 +33,10 @@ class FragmentMainMenu: Fragment(R.layout.fragment_main_menu_land), View.OnClick
     private fun selectLand(id: Int){
         findNavController().navigate(R.id.action_fragmentMainMenu_to_fragmentSelectWeapons,
         bundleOf(FragmentSelectWeapons.ID_LAND to id))
+    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }
