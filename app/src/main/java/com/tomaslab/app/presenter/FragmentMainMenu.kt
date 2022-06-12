@@ -2,13 +2,15 @@ package com.tomaslab.app.presenter
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.tomaslab.app.R
 import com.tomaslab.app.databinding.FragmentMainMenuLandBinding
 
 class FragmentMainMenu: Fragment(R.layout.fragment_main_menu_land), View.OnClickListener {
 
-    private  var binding: FragmentMainMenuLandBinding? = null
+    private var binding: FragmentMainMenuLandBinding? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -21,8 +23,8 @@ class FragmentMainMenu: Fragment(R.layout.fragment_main_menu_land), View.OnClick
         binding = null
     }
 
-    override fun onClick(p0: View?) {
-        when(p0){
+    override fun onClick(v: View?) {
+        when(v){
             binding?.im1 -> selectLand(1)
             binding?.im2 -> selectLand(2)
             binding?.im3 -> selectLand(3)
@@ -35,6 +37,8 @@ class FragmentMainMenu: Fragment(R.layout.fragment_main_menu_land), View.OnClick
     }
 
     private fun selectLand(id: Int){
+        findNavController().navigate(R.id.action_fragmentMainMenu_to_fragmentSelectWeapons,
+        bundleOf(FragmentSelectWeapons.ID_LAND to id))
 
     }
 }

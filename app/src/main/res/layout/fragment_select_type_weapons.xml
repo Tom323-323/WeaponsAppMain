@@ -8,14 +8,48 @@
     android:background="@color/white"
     tools:context="com.tomaslab.app.presenter.FragmentSelectTypeWeapons">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_weapons"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="60dp"
+        android:layout_marginEnd="90dp"
+        android:background="@drawable/toolbar_all"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title_land"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:text="ARMOR"
+        android:textColor="@color/light_black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_land"
+        app:layout_constraintEnd_toStartOf="@+id/img_land"
+        app:layout_constraintTop_toTopOf="@+id/img_land" />
+
+    <ImageView
+        android:id="@+id/img_land"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="24dp"
+        android:contentDescription="german_flag"
+
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar3"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.41" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_type_weapons"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="50dp"
+        android:clipToPadding="false"
+        android:foregroundGravity="center"
+        android:overScrollMode="never" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
