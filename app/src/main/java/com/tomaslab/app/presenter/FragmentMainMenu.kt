@@ -25,14 +25,14 @@ class FragmentMainMenu: Fragment(R.layout.fragment_main_menu_land), View.OnClick
 
     override fun onClick(v: View?) {
         when(v){
-            binding?.im1 -> selectLand(1)
-            binding?.im2 -> selectLand(2)
-            binding?.im3 -> selectLand(3)
-            binding?.im4 -> selectLand(4)
-            binding?.im5 -> selectLand(5)
-            binding?.im6 -> selectLand(6)
-            binding?.im7 -> selectLand(7)
-            binding?.im8 -> selectLand(8)
+            binding?.im1 -> selectLand(0)
+            binding?.im2 -> selectLand(1)
+            binding?.im3 -> selectLand(2)
+            binding?.im4 -> selectLand(3)
+            binding?.im5 -> selectLand(4)
+            binding?.im6 -> selectLand(5)
+            binding?.im7 -> selectLand(6)
+            binding?.im8 -> selectLand(7)
         }
     }
 
