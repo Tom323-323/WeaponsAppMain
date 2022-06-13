@@ -15,6 +15,16 @@ class FragmentMainMenu: Fragment(R.layout.fragment_main_menu_land), View.OnClick
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMainMenuLandBinding.bind(view)
+
+        binding?.im1?.setOnClickListener(this)
+        binding?.im2?.setOnClickListener(this)
+        binding?.im3?.setOnClickListener(this)
+        binding?.im4?.setOnClickListener(this)
+        binding?.im5?.setOnClickListener(this)
+        binding?.im6?.setOnClickListener(this)
+        binding?.im7?.setOnClickListener(this)
+        binding?.im8?.setOnClickListener(this)
+
     }
 
     override fun onClick(v: View?) {

@@ -33,7 +33,11 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
 
         val title_array_land = resources.getStringArray(R.array.land_name_title)
 
-        binding?.titleLand?.text = title_array_land[id] // Set title text in Head Line
+        if(id == 0) {
+            binding?.titleLand?.textSize = 22F
+            binding?.titleLand?.text = title_array_land[id]} // Text size from long land - Great Brit
+        else {
+            binding?.titleLand?.text = title_array_land[id]} // Set title text in Head Line
 
         binding?.imgLand?.setImageResource(img_array_land[id]) // Set image in Head Line
 
