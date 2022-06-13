@@ -15,16 +15,14 @@ class FragmentSplash: Fragment(R.layout.fragment_splash) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSplashBinding.bind(view)
-
-        init()
-
         binding!!.fragmentSplashScreen.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentSplash_to_fragmentMainMenu)
         }
+        init()
     }
 
-    private fun init(){
-        val array_content = resources.getStringArray(R.array.splash_screen_text_content) // Set random text in SplashScreen
+    private fun init(){ // Set random text in SplashScreen
+        val array_content = resources.getStringArray(R.array.splash_screen_text_content)
         binding?.tvContentSplash?.text = array_content[Random.nextInt(array_content.count())]
     }
 
@@ -32,8 +30,5 @@ class FragmentSplash: Fragment(R.layout.fragment_splash) {
         super.onDestroyView()
         binding = null
     }
-
-
-
 
 }
