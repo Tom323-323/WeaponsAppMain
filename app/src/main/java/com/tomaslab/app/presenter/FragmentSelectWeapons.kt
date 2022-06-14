@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tomaslab.app.R
 import com.tomaslab.app.databinding.FragmentSelectWeaponsLandBinding
+import com.tomaslab.app.presenter.model.WeaponsModel
 
 
 class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
@@ -23,9 +24,13 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
         val id_land = requireArguments().getInt(ID_LAND)
         landManager(id_land)
 
+        // ReccyclerView___________________________________________________
         val rv = binding!!.rvTypeWeapons
         rv.layoutManager = LinearLayoutManager(requireContext())
+        rv.setHasFixedSize(true)
+        val dataWeapons = arrayListOf<WeaponsModel>()
 
+        //_________________________________________________________________
 
     }
 
