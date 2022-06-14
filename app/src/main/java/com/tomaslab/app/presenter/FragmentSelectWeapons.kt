@@ -1,12 +1,12 @@
 package com.tomaslab.app.presenter
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.tomaslab.app.R
 import com.tomaslab.app.databinding.FragmentSelectWeaponsLandBinding
+
 
 class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
 
@@ -21,8 +21,11 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
         binding = FragmentSelectWeaponsLandBinding.bind(view)
 
         val id_land = requireArguments().getInt(ID_LAND)
-
         landManager(id_land)
+
+        val rv = binding!!.rvTypeWeapons
+        rv.layoutManager = LinearLayoutManager(requireContext())
+
 
     }
 

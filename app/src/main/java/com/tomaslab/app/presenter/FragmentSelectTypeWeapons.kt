@@ -13,6 +13,10 @@ class FragmentSelectTypeWeapons: Fragment(R.layout.fragment_select_type_weapons)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSelectTypeWeaponsBinding.bind(view)
+
+
+
+
     }
 
 

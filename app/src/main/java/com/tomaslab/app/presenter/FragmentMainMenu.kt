@@ -24,7 +24,6 @@ class FragmentMainMenu: Fragment(R.layout.fragment_main_menu_land), View.OnClick
         binding?.im6?.setOnClickListener(this)
         binding?.im7?.setOnClickListener(this)
         binding?.im8?.setOnClickListener(this)
-
     }
 
     override fun onClick(v: View?) {
