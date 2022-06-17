@@ -58,27 +58,12 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
 
     // RecyclerView add data________________________________________________
     private fun onDataInit(id: Int){
-        when(id){
-            0 ->
-            1 ->
-            2 ->
-            3 ->
-            4 ->
-            5 ->
-            6 ->
-            7 ->
+        for(i in 0..5){
+            dataWeapons.add(WeaponsModel(id = i, title = title_arr[i], img = i, content = content_arr[i]))
         }
-
     }
 
-    private fun buildData (id: Int){
-        dataWeapons.add(WeaponsModel(id = 0, title = title_arr[0], img = 0, content = content_arr[0]))
-        dataWeapons.add(WeaponsModel(id = 1, title = title_arr[1], img = 1, content = content_arr[1]))
-        dataWeapons.add(WeaponsModel(id = 2, title = title_arr[2], img = 2, content = content_arr[2]))
-        dataWeapons.add(WeaponsModel(id = 3, title = title_arr[3], img = 3, content = content_arr[3]))
-        dataWeapons.add(WeaponsModel(id = 4, title = title_arr[4], img = 4, content = content_arr[4]))
-        dataWeapons.add(WeaponsModel(id = 5, title = title_arr[5], img = 5, content = content_arr[5]))
-    }
+
 
 
     override fun onDestroyView() {
