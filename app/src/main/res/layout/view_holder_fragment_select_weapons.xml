@@ -81,6 +81,7 @@
                 android:background="@drawable/btn_background"
                 android:fontFamily="serif"
                 android:text="@string/read_more"
+                app:backgroundTint="@null"
                 android:textColor="@color/black"
                 android:textSize="11sp"
                 android:textStyle="bold"
