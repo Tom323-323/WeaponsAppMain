@@ -6,6 +6,8 @@ import android.view.View
 import android.view.animation.AccelerateInterpolator
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -21,7 +23,7 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
     val dataWeapons = mutableListOf<WeaponsModel>()
 
     companion object {
-        const val ID_LAND = "id_land"
+         const val ID_LAND = "id_land"
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,7 +40,7 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
         val rv = binding!!.rvTypeWeapons
         rv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         rv.setHasFixedSize(true)
-        rv.adapter = AdapterFragmentSelectWeapons(dataWeapons as ArrayList<WeaponsModel>) //Need crate ADAPTER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        rv.adapter = AdapterFragmentSelectWeapons(dataWeapons as ArrayList<WeaponsModel>,this) //Need crate ADAPTER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         //_________________________________________________________________
 
 
@@ -47,10 +49,10 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
         val shapHelper: SnapHelper = LinearSnapHelper()
         shapHelper.attachToRecyclerView(rv)
         Handler().postDelayed({
-            val viewHolder: RecyclerView.ViewHolder = rv.findViewHolderForPosition(0)!!
-            val card = viewHolder.itemView.findViewById<CardView>(R.id.constrain_element_viewholder_select_weapons)
-            card.animate().setDuration(250).scaleX(1f).scaleY(1f)
-                .setInterpolator(AccelerateInterpolator()).start()
+            val viewHolder: RecyclerView.ViewHolder? = rv.findViewHolderForPosition(0)
+            val card = viewHolder?.itemView?.findViewById<CardView>(R.id.constrain_element_viewholder_select_weapons)
+            card?.animate()?.setDuration(250)?.scaleX(1f)?.scaleY(1f)
+                ?.setInterpolator(AccelerateInterpolator())?.start()
         }, 80)
 
         rv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -98,12 +100,11 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
 
         binding?.imgLand?.setImageResource(img_array_land[id]) // Set image in Head Line
 
-        for(i in 0..5){
-            dataWeapons.add(WeaponsModel(id = id, title = title_arr[i], img = img_arr[i], content = content_arr[i])) // RecyclerView data
+        if(dataWeapons.size>0){} else {for(i in 0..5){
+            dataWeapons.add(WeaponsModel(id = id, title = title_arr[i], img = img_arr[i], content = content_arr[i])) }// RecyclerView data
         }
+
     }
-
-
 
 
     override fun onDestroyView() {

@@ -3,10 +3,12 @@ package com.tomaslab.app.presenter
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.tomaslab.app.R
-import com.tomaslab.app.R.id.fragmentMainMenu
 import com.tomaslab.app.databinding.ActivityMainBinding
 
 
@@ -19,20 +21,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         viewGone ()
         setContentView(binding.root)
+
     }
-
-
-//    override fun onBackPressed() {
-//        val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)?.javaClass?.simpleName
-//
-//        if(currentFragment == supportFragmentManager.findFragmentById(R.id.frag)?.javaClass?.simpleName){
-//            finishAffinity()
-//            Toast.makeText(this, "finish", Toast.LENGTH_SHORT).show()
-//        }else{
-//            supportFragmentManager.popBackStack()
-//            Toast.makeText(this, "back", Toast.LENGTH_SHORT).show()
-//        }
-//    }
 
     // Full screen
     private fun viewGone(){
