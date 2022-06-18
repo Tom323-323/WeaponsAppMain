@@ -23,4 +23,10 @@ class FragmentSelectTypeWeapons: Fragment(R.layout.fragment_select_type_weapons)
         Toast.makeText(requireContext(), "id_type - ${id_type}",Toast.LENGTH_LONG).show()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+        //dataWeapons.clear() /// НЕ ЗАБЫТЬ ОЧИСТИТЬ РЕСАЙКЛ!!!!!!!!!!!!!!!!!!!!!!!!
+    }
+
 }

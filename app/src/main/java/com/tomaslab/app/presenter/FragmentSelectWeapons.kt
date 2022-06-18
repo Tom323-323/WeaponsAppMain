@@ -84,7 +84,7 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
 
         val title_arr = resources.getStringArray(R.array.land_title)
         val content_arr = resources.getStringArray(R.array.land_content)
-        val img_arr = arrayListOf<Int>(R.drawable.img_main_gb,R.drawable.img_main_fr,R.drawable.img_main_ger,R.drawable.img_main_usa,R.drawable.img_main_fin,
+        val img_arr_weapons = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
             R.drawable.img_main_jp)// Here need add picture with weapons -- rifle, pistols....
 
         val img_array_land = arrayListOf<Int>(R.drawable.img_main_gb,R.drawable.img_main_fr,R.drawable.img_main_ger,R.drawable.img_main_usa,R.drawable.img_main_fin,
@@ -100,16 +100,13 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
 
         binding?.imgLand?.setImageResource(img_array_land[id]) // Set image in Head Line
 
-        if(dataWeapons.size>0){} else {for(i in 0..5){
-            dataWeapons.add(WeaponsModel(id = id, title = title_arr[i], img = img_arr[i], content = content_arr[i])) }// RecyclerView data
-        }
-
+        for(i in 0..5){dataWeapons.add(WeaponsModel(id = id, title = title_arr[i], img = img_arr_weapons[i], content = content_arr[i]))} // Create 6 element in recycler view
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
+        dataWeapons.clear()
     }
 
 }
