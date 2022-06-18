@@ -16,6 +16,8 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
 
     val title_arr = resources.getStringArray(R.array.land_title)
     val content_arr = resources.getStringArray(R.array.land_content)
+    val img_arr = arrayListOf<Int>(R.drawable.img_main_gb,R.drawable.img_main_fr,R.drawable.img_main_ger,R.drawable.img_main_usa,R.drawable.img_main_fin,
+        R.drawable.img_main_jp)// Here need add picture with weapons -- rifle, pistols....
 
     companion object {
         const val ID_LAND = "id_land"
@@ -27,8 +29,8 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
 
 
         val id_land = requireArguments().getInt(ID_LAND) // Get argument from FragmentMainMenu
-        onDataInit(id_land)
-        landManager(id_land)
+
+        landManager(id_land) // Load headline and content.
 
         // ReccyclerView___________________________________________________
         val rv = binding!!.rvTypeWeapons
@@ -54,17 +56,11 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
             binding?.titleLand?.text = title_array_land[id]} // Set title text in Head Line
 
         binding?.imgLand?.setImageResource(img_array_land[id]) // Set image in Head Line
-    }
 
-    // RecyclerView add data________________________________________________
-    private fun onDataInit(id: Int){
         for(i in 0..5){
-            dataWeapons.add(WeaponsModel(id = i, title = title_arr[i], img = i, content = content_arr[i]))
+            dataWeapons.add(WeaponsModel(id = id, title = title_arr[i], img = img_arr[i], content = content_arr[i])) // RecyclerView data
         }
     }
-
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()
