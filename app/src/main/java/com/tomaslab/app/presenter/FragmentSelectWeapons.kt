@@ -1,11 +1,15 @@
 package com.tomaslab.app.presenter
 
-import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
-import android.widget.LinearLayout
+import android.view.animation.AccelerateInterpolator
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SnapHelper
 import com.tomaslab.app.R
 import com.tomaslab.app.databinding.FragmentSelectWeaponsLandBinding
 import com.tomaslab.app.domain.AdapterFragmentSelectWeapons
@@ -35,8 +39,42 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
         rv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         rv.setHasFixedSize(true)
         rv.adapter = AdapterFragmentSelectWeapons(dataWeapons as ArrayList<WeaponsModel>) //Need crate ADAPTER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
         //_________________________________________________________________
+
+
+        // Animation recycler view__________________________________________________________________
+        rv.setPadding(110, 0, 110, 0)
+        val shapHelper: SnapHelper = LinearSnapHelper()
+        shapHelper.attachToRecyclerView(rv)
+        Handler().postDelayed({
+            val viewHolder: RecyclerView.ViewHolder = rv.findViewHolderForPosition(0)!!
+            val card = viewHolder.itemView.findViewById<CardView>(R.id.constrain_element_viewholder_select_weapons)
+            card.animate().setDuration(250).scaleX(1f).scaleY(1f)
+                .setInterpolator(AccelerateInterpolator()).start()
+        }, 80)
+
+        rv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                val v = shapHelper.findSnapView(rv.layoutManager)
+                val pos: Int = (rv.layoutManager as LinearLayoutManager).getPosition(v!!)
+                val viewHolder: RecyclerView.ViewHolder = rv.findViewHolderForPosition(pos)!!
+                val card = viewHolder.itemView.findViewById<CardView>(R.id.constrain_element_viewholder_select_weapons)
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    card.animate().setDuration(250).scaleX(1f).scaleY(1f)
+                        .setInterpolator(AccelerateInterpolator()).start()
+                } else {
+                    card.animate().setDuration(250).scaleX(0.85f).scaleY(0.85f)
+                        .setInterpolator(AccelerateInterpolator()).start()
+                }
+            }
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+            }
+        })
+        // Animation recycler view__________________________________________________________________
+
 
     }
 
@@ -64,6 +102,9 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
             dataWeapons.add(WeaponsModel(id = id, title = title_arr[i], img = img_arr[i], content = content_arr[i])) // RecyclerView data
         }
     }
+
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
