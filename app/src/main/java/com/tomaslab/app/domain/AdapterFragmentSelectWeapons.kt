@@ -38,7 +38,7 @@ class AdapterFragmentSelectWeapons(private val dataWeapons: ArrayList<WeaponsMod
             title.text = dataWeapons.title
             content.text = dataWeapons.content
 
-            btn_more.setOnClickListener { onClick(index) }
+            btn_more.setOnClickListener { onClick(index) } // Button READ MORE
         }
 
     }
