@@ -3,12 +3,14 @@ package com.tomaslab.app.domain
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.tomaslab.app.R
+import com.tomaslab.app.presenter.FragmentContentWeapons
 import com.tomaslab.app.presenter.model.WeaponsModelType
 
 class AdapterFragmentSelectTypeWeapons(private val dataTypeWeapons: ArrayList<WeaponsModelType>,
@@ -39,13 +41,23 @@ class AdapterFragmentSelectTypeWeapons(private val dataTypeWeapons: ArrayList<We
             val year = itemView.findViewById<TextView>(R.id.razrab_year)
             val men = itemView.findViewById<TextView>(R.id.constructor_men)
 
-            image.setImageResource(dataTypeWeapons.img) // Set Image, title and text in Holder
+            image.setImageResource(dataTypeWeapons.image) // Set Image, title and text in Holder
             title.text = dataTypeWeapons.title
-            content.text = dataTypeWeapons.content
+            calibr.text = dataTypeWeapons.calibr
+            year.text = dataTypeWeapons.year
+            men.text = dataTypeWeapons.men
 
-            btn_more.setOnClickListener {
+            itemView.setOnClickListener {
                 onClick(index)
             }
         }
+    }
+
+    private fun onClick(index: Int) {
+        // Need take send index to next Fragment
+        val navCon = parentFragment.findNavController()
+        navCon.navigate(R.id.action_fragmentSelectTypeWeapons_to_fragmentContentWeapons,
+            bundleOf(FragmentContentWeapons.ID_CONTENT to index)
+        )
     }
 }

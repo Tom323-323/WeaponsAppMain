@@ -8,6 +8,11 @@ import com.tomaslab.app.databinding.FragmentContentWeaponsBinding
 
 class FragmentContentWeapons: Fragment(R.layout.fragment_content_weapons) {
 
+
+    companion object {
+        const val ID_CONTENT = "id_content"
+    }
+
     private var binding: FragmentContentWeaponsBinding? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
