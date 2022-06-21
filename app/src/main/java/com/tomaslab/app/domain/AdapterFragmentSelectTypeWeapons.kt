@@ -44,7 +44,7 @@ class AdapterFragmentSelectTypeWeapons(private val dataTypeWeapons: ArrayList<We
             image.setImageResource(dataTypeWeapons.image) // Set Image, title and text in Holder
             title.text = dataTypeWeapons.title
             calibr.text = dataTypeWeapons.calibr
-            year.text = dataTypeWeapons.year
+            year.text = dataTypeWeapons.year.toString()
             men.text = dataTypeWeapons.men
 
             itemView.setOnClickListener {

@@ -28,7 +28,7 @@ class FragmentSelectTypeWeapons: Fragment(R.layout.fragment_select_type_weapons)
         val id_type = requireArguments().getInt(ID_TYPE) // Get argument from FragmentSelectWeapons
         Toast.makeText(requireContext(), "id_type - ${id_type}",Toast.LENGTH_LONG).show()// TEST
 
-        loadWeapons(id_type)
+        loadWeapons(id_type)// need fix!!!!!!!!!!!!!!!!
 
         //RecyclerView________________________________
         val rv = binding!!.rvTypeWeapons
@@ -40,7 +40,7 @@ class FragmentSelectTypeWeapons: Fragment(R.layout.fragment_select_type_weapons)
 
     }
 
-    private fun loadWeapons(id: Int){
+    private fun loadWeapons(id: Int){//need fix!!!!!!!!!!!!!
         val img_arr_weapons_0 = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
             R.drawable.img_main_jp)
         val img_arr_weapons_1 = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
