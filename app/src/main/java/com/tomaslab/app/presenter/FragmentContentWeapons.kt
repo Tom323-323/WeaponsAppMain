@@ -20,6 +20,7 @@ class FragmentContentWeapons: Fragment(R.layout.fragment_content_weapons) {
         binding = FragmentContentWeaponsBinding.bind(view)
     }
 
+
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
