@@ -1,0 +1,51 @@
+package com.tomaslab.app.domain
+
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
+import com.tomaslab.app.R
+import com.tomaslab.app.presenter.model.WeaponsModelType
+
+class AdapterFragmentSelectTypeWeapons(private val dataTypeWeapons: ArrayList<WeaponsModelType>,
+                                       val parentFragment: Fragment): RecyclerView.Adapter<AdapterFragmentSelectTypeWeapons.ViewHolder>() {
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): AdapterFragmentSelectTypeWeapons.ViewHolder {
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.view_holder_fragment_type_weapons, parent, false)
+        return ViewHolder(itemView)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(dataTypeWeapons[position], position)
+    }
+
+    override fun getItemCount(): Int {
+        return dataTypeWeapons.size
+    }
+
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(dataTypeWeapons: WeaponsModelType, index: Int) {
+            val image = itemView.findViewById<ImageView>(R.id.holder_img_gun)
+            val title = itemView.findViewById<TextView>(R.id.holder_name_gun)
+            val calibr = itemView.findViewById<TextView>(R.id.holder_calibr_gun)
+            val year = itemView.findViewById<TextView>(R.id.razrab_year)
+            val men = itemView.findViewById<TextView>(R.id.constructor_men)
+
+            image.setImageResource(dataTypeWeapons.img) // Set Image, title and text in Holder
+            title.text = dataTypeWeapons.title
+            content.text = dataTypeWeapons.content
+
+            btn_more.setOnClickListener {
+                onClick(index)
+            }
+        }
+    }
+}

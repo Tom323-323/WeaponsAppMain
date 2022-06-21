@@ -6,8 +6,6 @@ import android.view.View
 import android.view.animation.AccelerateInterpolator
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -22,9 +20,6 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
     private var binding: FragmentSelectWeaponsLandBinding? = null
 
     val dataWeapons = mutableListOf<WeaponsModel>()
-
-
-
 
     companion object {
          const val ID_LAND = "id_land"

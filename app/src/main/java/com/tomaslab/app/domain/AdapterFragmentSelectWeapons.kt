@@ -13,8 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tomaslab.app.R
 import com.tomaslab.app.presenter.FragmentSelectTypeWeapons
 import com.tomaslab.app.presenter.model.WeaponsModel
+import com.tomaslab.app.presenter.model.WeaponsModelType
 
-class AdapterFragmentSelectWeapons(private val dataWeapons: ArrayList<WeaponsModel>, val parentFragment: Fragment) : RecyclerView.Adapter<AdapterFragmentSelectWeapons.ViewHolder>() {
+class AdapterFragmentSelectWeapons(private val dataWeapons: ArrayList<WeaponsModelType>, val parentFragment: Fragment) : RecyclerView.Adapter<AdapterFragmentSelectWeapons.ViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
