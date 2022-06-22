@@ -29,7 +29,7 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSelectWeaponsLandBinding.bind(view)
 
-        val id_land = requireArguments().getInt(ID_LAND) // Get argument from FragmentMainMenu
+        val id_land = requireArguments().getInt(ID_LAND,0) // Get argument from FragmentMainMenu
 
         landManager(id_land) // Load headline and content.
         loadWeapons(id_land)
