@@ -93,5 +93,10 @@
             с гладким или нарезным стволом.</item>
     </array>
 
+    <array name="img_content">
+        <item>R.drawable.img_german_pistol</item>
+        <item>R.drawable.img_pistol_usa</item>
+    </array>
+
 
 </resources>

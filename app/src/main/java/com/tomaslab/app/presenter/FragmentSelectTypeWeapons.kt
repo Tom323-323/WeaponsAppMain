@@ -61,6 +61,8 @@ class FragmentSelectTypeWeapons: Fragment(R.layout.fragment_select_type_weapons)
         val title_arr = resources.getStringArray(R.array.land_title)
         val content_arr = resources.getStringArray(R.array.land_content)
 
+        val img_arr = resources.getStringArray(R.array.img_content)
+
         var array = arrayListOf<Int>()
         when(id){
             0 ->  array = img_arr_weapons_0
