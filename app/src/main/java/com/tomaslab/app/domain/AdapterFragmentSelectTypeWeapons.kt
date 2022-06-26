@@ -14,7 +14,7 @@ import com.tomaslab.app.presenter.FragmentContentWeapons
 import com.tomaslab.app.presenter.model.WeaponsModelType
 
 class AdapterFragmentSelectTypeWeapons(private val dataTypeWeapons: ArrayList<WeaponsModelType>,
-                                       val parentFragment: Fragment): RecyclerView.Adapter<AdapterFragmentSelectTypeWeapons.ViewHolder>() {
+                                       private val parentFragment: Fragment): RecyclerView.Adapter<AdapterFragmentSelectTypeWeapons.ViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -41,10 +41,10 @@ class AdapterFragmentSelectTypeWeapons(private val dataTypeWeapons: ArrayList<We
             val year = itemView.findViewById<TextView>(R.id.razrab_year)
             val men = itemView.findViewById<TextView>(R.id.constructor_men)
 
-            image.setImageResource(dataTypeWeapons.image) // Set Image, title and text in Holder
+            image.setImageResource(R.drawable.main_menu_logo_main) // TEST LOGO!!!!! Set Image, title and text in Holder
             title.text = dataTypeWeapons.title
             calibr.text = dataTypeWeapons.calibr
-            year.text = dataTypeWeapons.year.toString()
+            year.text = dataTypeWeapons.year
             men.text = dataTypeWeapons.men
 
             itemView.setOnClickListener {
@@ -54,7 +54,6 @@ class AdapterFragmentSelectTypeWeapons(private val dataTypeWeapons: ArrayList<We
     }
 
     private fun onClick(index: Int) {
-        // Need take send index to next Fragment
         val navCon = parentFragment.findNavController()
         navCon.navigate(R.id.action_fragmentSelectTypeWeapons_to_fragmentContentWeapons,
             bundleOf(FragmentContentWeapons.ID_CONTENT to index)
