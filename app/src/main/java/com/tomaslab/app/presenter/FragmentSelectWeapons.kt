@@ -2,6 +2,7 @@ package com.tomaslab.app.presenter
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import android.view.animation.AccelerateInterpolator
 import androidx.cardview.widget.CardView
@@ -29,10 +30,11 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSelectWeaponsLandBinding.bind(view)
 
-        val id_land = requireArguments().getInt(ID_LAND,0) // Get argument from FragmentMainMenu
+        val id_land = requireArguments().getInt(ID_LAND) // Get argument from FragmentMainMenu
 
         landManager(id_land) // Load headline and content.
         loadWeapons(id_land)
+        Log.e("AAA","Select weapons: $id_land")
 
         // ReccyclerView___________________________________________________
         val rv = binding!!.rvTypeWeapons

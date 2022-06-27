@@ -1,8 +1,8 @@
 package com.tomaslab.app.presenter
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tomaslab.app.R
@@ -18,6 +18,7 @@ class FragmentSelectTypeWeapons: Fragment(R.layout.fragment_select_type_weapons)
 
     companion object {
         const val ID_TYPE = "id_type"
+        const val ID_LAND = "id_land"
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -25,7 +26,9 @@ class FragmentSelectTypeWeapons: Fragment(R.layout.fragment_select_type_weapons)
         binding = FragmentSelectTypeWeaponsBinding.bind(view)
 
         val id_type = requireArguments().getInt(ID_TYPE) // Get argument from FragmentSelectWeapons
-        Toast.makeText(requireContext(), "id_type - $id_type",Toast.LENGTH_LONG).show()// TEST
+        val id_land = requireArguments().getInt(ID_LAND)
+        Log.e("AAA","Select type: $id_land")
+        landManager(id_land)
 
         loadWeapons(id_type.toString())// need fix!!!!!!!!!!!!!!!!
 
@@ -37,49 +40,19 @@ class FragmentSelectTypeWeapons: Fragment(R.layout.fragment_select_type_weapons)
         rv.adapter = AdapterFragmentSelectTypeWeapons(dataWeaponsType as ArrayList<WeaponsModelType>,this)
         //__________________________________________________
 
+
+
     }
 
     private fun loadWeapons(id: String){//need fix!!!!!!!!!!!!!
-        val img_arr_weapons_0 = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
-            R.drawable.img_main_jp)
-        val img_arr_weapons_1 = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
-            R.drawable.img_main_jp)
-        val img_arr_weapons_2 = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
-            R.drawable.img_main_jp)
-        val img_arr_weapons_3 = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
-            R.drawable.img_main_jp)
-        val img_arr_weapons_4 = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
-            R.drawable.img_main_jp)
-        val img_arr_weapons_5 = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
-            R.drawable.img_main_jp)
-        val img_arr_weapons_6 = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
-            R.drawable.img_main_jp)
-        val img_arr_weapons_7 = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
-            R.drawable.img_main_jp)
 
-        val title_arr = resources.getStringArray(R.array.land_title)
-        val content_arr = resources.getStringArray(R.array.land_content)
-
-        val img_arr = resources.getStringArray(R.array.img_content)
-
-        var array = arrayListOf<Int>()
-        when(id){
-            "00" ->  array = img_arr_weapons_0
-            "1" ->  array = img_arr_weapons_1
-            "2" ->  array = img_arr_weapons_2
-            "3" ->  array = img_arr_weapons_3
-            "4" ->  array = img_arr_weapons_4
-            "5" ->  array = img_arr_weapons_5
-            "6" ->  array = img_arr_weapons_6
-            "7" ->  array = img_arr_weapons_7
-        }
         for(i in 0..5){dataWeaponsType.add(WeaponsModelType(
             id = "id",
-            name ="",
-            title = "",
-            calibr = "",
-            year = "9999",
-            men = "",
+            name ="Maschinenpistole MP-40",
+            title = "Maschinenpistole MP-40",
+            calibr = "Calibr: 9 mm",
+            year = "Year: 1938",
+            men = "Development: Hugo Schmeisser",
             image = 77))
         }
     }
@@ -87,7 +60,25 @@ class FragmentSelectTypeWeapons: Fragment(R.layout.fragment_select_type_weapons)
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
-        //dataWeapons.clear() /// НЕ ЗАБЫТЬ ОЧИСТИТЬ РЕСАЙКЛ!!!!!!!!!!!!!!!!!!!!!!!!
+        dataWeaponsType.clear()
     }
+
+    private fun landManager(id: Int){
+        val img_array_land = arrayListOf<Int>(R.drawable.img_main_gb,R.drawable.img_main_fr,R.drawable.img_main_ger,R.drawable.img_main_usa,R.drawable.img_main_fin,
+            R.drawable.img_main_jp,R.drawable.img_main_ussr,R.drawable.img_main_ital)
+
+        val title_array_land = resources.getStringArray(R.array.land_name_title)
+
+        if(id == 0) {
+            binding?.titleLand?.textSize = 22F
+            binding?.titleLand?.text = title_array_land[id]} // Text size from long land - Great Brit
+        else {
+            binding?.titleLand?.text = title_array_land[id]} // Set title text in Head Line
+
+        binding?.imgLand?.setImageResource(img_array_land[id]) // Set image in Head Line
+
+    }
+
+
 
 }
