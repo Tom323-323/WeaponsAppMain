@@ -55,7 +55,7 @@ class AdapterFragmentSelectWeapons(private val dataWeapons: ArrayList<WeaponsMod
     private fun onClick(index: Int) {
         val navCon = parentFragment.findNavController()
         navCon.navigate(R.id.action_fragmentSelectWeapons_to_fragmentSelectTypeWeapons,
-            bundleOf(FragmentSelectTypeWeapons.ID_TYPE to index, FragmentSelectTypeWeapons.ID_LAND to id_land.toString())
+            bundleOf(FragmentSelectTypeWeapons.ID_TYPE to index, FragmentSelectTypeWeapons.ID_LAND to id_land)
         )
     }
 
