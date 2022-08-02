@@ -14,7 +14,7 @@ class FragmentSelectTypeWeapons: Fragment(R.layout.fragment_select_type_weapons)
 
     private var binding: FragmentSelectTypeWeaponsBinding? = null
 
-    val dataWeaponsType = mutableListOf<WeaponsModelType>()
+    private val dataWeaponsType = mutableListOf<WeaponsModelType>()
 
     companion object {
         const val ID_TYPE = "id_type"
@@ -37,23 +37,22 @@ class FragmentSelectTypeWeapons: Fragment(R.layout.fragment_select_type_weapons)
         rv.layoutManager = LinearLayoutManager(requireContext(),
             LinearLayoutManager.VERTICAL,false)
         rv.setHasFixedSize(true)
-        rv.adapter = AdapterFragmentSelectTypeWeapons(dataWeaponsType as ArrayList<WeaponsModelType>,this)
+        rv.adapter = AdapterFragmentSelectTypeWeapons(dataWeaponsType as ArrayList<WeaponsModelType>,this,id_type,id_land)
         //__________________________________________________
-
-
 
     }
 
     private fun loadWeapons(id: String){//need fix!!!!!!!!!!!!!
 
-        for(i in 0..5){dataWeaponsType.add(WeaponsModelType(
-            id = "id",
-            name ="Maschinenpistole MP-40",
-            title = "Maschinenpistole MP-40",
-            calibr = "Calibr: 9 mm",
-            year = "Year: 1938",
-            men = "Development: Hugo Schmeisser",
-            image = 77))
+        for(i in 0..5){
+            dataWeaponsType.add(WeaponsModelType(
+                id = "",
+                name ="Maschinenpistole MP-40",
+                title = i.toString(),
+                calibr = id,
+                year = "Year: 1938",
+                men = "Designer: Hugo Schmeisser",
+                image = 77))
         }
     }
 
@@ -63,6 +62,7 @@ class FragmentSelectTypeWeapons: Fragment(R.layout.fragment_select_type_weapons)
         dataWeaponsType.clear()
     }
 
+    // Set Title in activity (Headline)
     private fun landManager(id: Int){
         val img_array_land = arrayListOf<Int>(R.drawable.img_main_gb,R.drawable.img_main_fr,R.drawable.img_main_ger,R.drawable.img_main_usa,R.drawable.img_main_fin,
             R.drawable.img_main_jp,R.drawable.img_main_ussr,R.drawable.img_main_ital)
@@ -71,7 +71,7 @@ class FragmentSelectTypeWeapons: Fragment(R.layout.fragment_select_type_weapons)
 
         if(id == 0) {
             binding?.titleLand?.textSize = 22F
-            binding?.titleLand?.text = title_array_land[id]} // Text size from long land - Great Brit
+            binding?.titleLand?.text = title_array_land[id]} // Text size from long text land - Great Brit
         else {
             binding?.titleLand?.text = title_array_land[id]} // Set title text in Head Line
 
