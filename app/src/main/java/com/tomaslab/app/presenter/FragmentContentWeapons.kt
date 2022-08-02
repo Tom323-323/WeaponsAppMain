@@ -29,6 +29,7 @@ class FragmentContentWeapons: Fragment(R.layout.fragment_content_weapons) {
         Log.e("AAA","$id_land+_$id_type+_$index_from_select")
     }
 
+
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
