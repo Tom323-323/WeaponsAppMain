@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentSelectWeapons"
-        android:name="com.tomaslab.app.presenter.FragmentSelectWeapons"
+        android:name="com.tomaslab.app.presenter.FragmentType"
         android:label="fragment_select_weapons_land"
         tools:layout="@layout/fragment_select_weapons_land" >
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentSelectTypeWeapons"
-        android:name="com.tomaslab.app.presenter.FragmentSelectTypeWeapons"
+        android:name="com.tomaslab.app.presenter.FragmentWeapons"
         android:label="fragment_select_type_weapons"
         tools:layout="@layout/fragment_select_type_weapons" >
         <action

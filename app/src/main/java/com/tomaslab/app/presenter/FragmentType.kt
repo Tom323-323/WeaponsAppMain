@@ -16,7 +16,7 @@ import com.tomaslab.app.databinding.FragmentSelectWeaponsLandBinding
 import com.tomaslab.app.domain.AdapterFragmentSelectWeapons
 import com.tomaslab.app.presenter.model.WeaponsModel
 
-class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
+class FragmentType: Fragment(R.layout.fragment_select_weapons_land) {
 
     private var binding: FragmentSelectWeaponsLandBinding? = null
 

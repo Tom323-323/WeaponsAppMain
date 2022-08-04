@@ -1,7 +1,6 @@
 package com.tomaslab.app.presenter
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.tomaslab.app.R
@@ -22,14 +21,19 @@ class FragmentContentWeapons: Fragment(R.layout.fragment_content_weapons) {
         binding = FragmentContentWeaponsBinding.bind(view)
 
         //Get arguments
-        val index_from_select = requireArguments().getInt(ID_CONTENT,999)
+        val id_weapon= requireArguments().getInt(ID_CONTENT,999)
         val id_type = requireArguments().getInt(ID_TYPE)
         val id_land = requireArguments().getInt(ID_LAND)
+        val id_main = id_land.toString()+id_type.toString()+id_weapon.toString()
+        crateContent(id_main.toInt()) // Create content
 
-        Log.e("AAA","$id_land+_$id_type+_$index_from_select")
     }
 
+    private fun crateContent(id_main:Int){
+       // create model content with image and text
 
+
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.tomaslab.app.R
 import com.tomaslab.app.presenter.FragmentContentWeapons
-import com.tomaslab.app.presenter.FragmentSelectTypeWeapons
 import com.tomaslab.app.presenter.model.WeaponsModelType
 
 class AdapterFragmentSelectTypeWeapons(private val dataTypeWeapons: ArrayList<WeaponsModelType>,

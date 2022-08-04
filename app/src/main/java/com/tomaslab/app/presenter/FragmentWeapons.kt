@@ -10,7 +10,7 @@ import com.tomaslab.app.databinding.FragmentSelectTypeWeaponsBinding
 import com.tomaslab.app.domain.AdapterFragmentSelectTypeWeapons
 import com.tomaslab.app.presenter.model.WeaponsModelType
 
-class FragmentSelectTypeWeapons: Fragment(R.layout.fragment_select_type_weapons) {
+class FragmentWeapons: Fragment(R.layout.fragment_select_type_weapons) {
 
     private var binding: FragmentSelectTypeWeaponsBinding? = null
 
@@ -27,7 +27,6 @@ class FragmentSelectTypeWeapons: Fragment(R.layout.fragment_select_type_weapons)
 
         val id_type = requireArguments().getInt(ID_TYPE) // Get argument from FragmentSelectWeapons
         val id_land = requireArguments().getInt(ID_LAND)
-        Log.e("AAA","Select type: $id_land")
         landManager(id_land)
 
         loadWeapons(id_type.toString())// need fix!!!!!!!!!!!!!!!!
