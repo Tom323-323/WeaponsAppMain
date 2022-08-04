@@ -32,7 +32,6 @@ class FragmentContentWeapons: Fragment(R.layout.fragment_content_weapons) {
     private fun crateContent(id_main:Int){
        // create model content with image and text
 
-
     }
 
     override fun onDestroyView() {
