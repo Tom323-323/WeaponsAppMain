@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.tomaslab.app.R
 import com.tomaslab.app.databinding.FragmentContentWeaponsBinding
+import com.tomaslab.app.presenter.model.ContentModel
 
 class FragmentContentWeapons: Fragment(R.layout.fragment_content_weapons) {
 
@@ -22,15 +23,19 @@ class FragmentContentWeapons: Fragment(R.layout.fragment_content_weapons) {
 
         //Get arguments
         val id_weapon= requireArguments().getInt(ID_CONTENT,999)
-        val id_type = requireArguments().getInt(ID_TYPE)
-        val id_land = requireArguments().getInt(ID_LAND)
-        val id_main = id_land.toString()+id_type.toString()+id_weapon.toString()
-        crateContent(id_main.toInt()) // Create content
+        val id_type = requireArguments().getInt(ID_TYPE, 999)
+        val id_land = requireArguments().getInt(ID_LAND,999)
+
+
+        //val id_main = id_land.toString()+id_type.toString()+id_weapon.toString()
+
+
+        crateContent(id_land,id_type,id_land) // Create content
 
     }
 
-    private fun crateContent(id_main:Int){
-       // create new model content with image and text
+    private fun crateContent(land: Int, type: Int, weapons: Int){
+       ContentModel(land = land, type = type, weapons = weapons)
     }
 
     override fun onDestroyView() {
