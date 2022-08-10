@@ -5,7 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.tomaslab.app.R
 import com.tomaslab.app.databinding.FragmentContentWeaponsBinding
-import com.tomaslab.app.presenter.model.ContentModel
+
 
 class FragmentContentWeapons: Fragment(R.layout.fragment_content_weapons) {
 
@@ -30,12 +30,13 @@ class FragmentContentWeapons: Fragment(R.layout.fragment_content_weapons) {
         //val id_main = id_land.toString()+id_type.toString()+id_weapon.toString()
 
 
-        crateContent(id_land,id_type,id_land) // Create content
+        crateContent(id_land,id_type,id_weapon) // Create content
 
     }
 
-    private fun crateContent(land: Int, type: Int, weapons: Int){
-       ContentModel(land = land, type = type, weapons = weapons)
+    private fun crateContent(land: Int, type: Int, weapon: Int){
+        val id_main = land.toString()+type.toString()+weapon.toString()
+
     }
 
     override fun onDestroyView() {
