@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.tomaslab.app.R
-import com.tomaslab.app.presenter.FragmentSelectTypeWeapons
+import com.tomaslab.app.presenter.FragmentWeapons
 import com.tomaslab.app.presenter.model.WeaponsModel
 
 class AdapterFragmentSelectWeapons(private val dataWeapons: ArrayList<WeaponsModel>, val parentFragment: Fragment, val id_land: Int) : RecyclerView.Adapter<AdapterFragmentSelectWeapons.ViewHolder>() {
@@ -55,7 +55,7 @@ class AdapterFragmentSelectWeapons(private val dataWeapons: ArrayList<WeaponsMod
     private fun onClick(index: Int) {
         val navCon = parentFragment.findNavController()
         navCon.navigate(R.id.action_fragmentSelectWeapons_to_fragmentSelectTypeWeapons,
-            bundleOf(FragmentSelectTypeWeapons.ID_TYPE to index, FragmentSelectTypeWeapons.ID_LAND to id_land)
+            bundleOf(FragmentWeapons.ID_TYPE to index, FragmentWeapons.ID_LAND to id_land)
         )
     }
 
