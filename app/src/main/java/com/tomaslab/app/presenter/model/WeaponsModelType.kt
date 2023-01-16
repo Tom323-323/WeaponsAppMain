@@ -1,6 +1,6 @@
 package com.tomaslab.app.presenter.model
 
-class WeaponsModelType(val id: String,
+data class WeaponsModelType(val id: String,
                        val name: String,
                        val title: String,
                        val calibr: String,

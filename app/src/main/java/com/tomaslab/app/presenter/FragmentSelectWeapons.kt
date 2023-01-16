@@ -37,7 +37,7 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
         Log.e("AAA","Select weapons: $id_land")
 
         // ReccyclerView___________________________________________________
-        val rv = binding!!.rvTypeWeapons
+        val rv = binding!!.recyclerViewTypeWeapons
         rv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         rv.setHasFixedSize(true)
         rv.adapter = AdapterFragmentSelectWeapons(dataWeapons as ArrayList<WeaponsModel>,this, id_land)
@@ -77,6 +77,7 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
         // Animation recycler view__________________________________________________________________
     }
 
+    // Create title name and image.
     private fun landManager(id: Int){
         val img_array_land = arrayListOf<Int>(R.drawable.img_main_gb,R.drawable.img_main_fr,R.drawable.img_main_ger,R.drawable.img_main_usa,R.drawable.img_main_fin,
             R.drawable.img_main_jp,R.drawable.img_main_ussr,R.drawable.img_main_ital)
@@ -93,38 +94,51 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
     }
 
     private fun loadWeapons(id: Int){
-        val img_arr_weapons_0 = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
-            R.drawable.img_main_jp)
-        val img_arr_weapons_1 = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
-            R.drawable.img_main_jp)
-        val img_arr_weapons_2 = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
-            R.drawable.img_main_jp)
-        val img_arr_weapons_3 = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
-            R.drawable.img_main_jp)
-        val img_arr_weapons_4 = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
-            R.drawable.img_main_jp)
-        val img_arr_weapons_5 = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
-            R.drawable.img_main_jp)
-        val img_arr_weapons_6 = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
-            R.drawable.img_main_jp)
-        val img_arr_weapons_7 = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
-            R.drawable.img_main_jp)
-
         val title_arr = resources.getStringArray(R.array.land_title)
         val content_arr = resources.getStringArray(R.array.land_content)
 
         var array = arrayListOf<Int>()
         when(id){
-                0 ->  array = img_arr_weapons_0
-                1 ->  array = img_arr_weapons_1
-                2 ->  array = img_arr_weapons_2
-                3 ->  array = img_arr_weapons_3
-                4 ->  array = img_arr_weapons_4
-                5 ->  array = img_arr_weapons_5
-                6 ->  array = img_arr_weapons_6
-                7 ->  array = img_arr_weapons_7
+                0 ->  array = loadImageArray(0)
+                1 ->  array = loadImageArray(1)
+                2 ->  array = loadImageArray(2)
+                3 ->  array = loadImageArray(3)
+                4 ->  array = loadImageArray(4)
+                5 ->  array = loadImageArray(5)
+                6 ->  array = loadImageArray(6)
+                7 ->  array = loadImageArray(7)
         }
-            for(i in 0..5){dataWeapons.add(WeaponsModel(id = id, title = title_arr[i], img = array[i], content = content_arr[i]))}
+
+        for(i in 0..5){
+            dataWeapons.add(WeaponsModel(id = id,
+                                        title = title_arr[i],
+                                        img = array[i],
+                                        content = content_arr[i]))
+        }
+
+    }
+
+    private fun loadImageArray(idImageArray:Int):ArrayList<Int>{
+        var array = arrayListOf<Int>()
+        when(idImageArray){
+            0 -> array = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
+            R.drawable.img_main_jp)
+            1 -> array = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
+                R.drawable.img_main_jp)
+            2 -> array = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
+                R.drawable.img_main_jp)
+            3 -> array = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
+                R.drawable.img_main_jp)
+            4 -> array = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
+                R.drawable.img_main_jp)
+            5 -> array = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
+                R.drawable.img_main_jp)
+            6 -> array = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
+                R.drawable.img_main_jp)
+            7 -> array = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
+                R.drawable.img_main_jp)
+        }
+        return array
     }
 
     override fun onDestroyView() {
