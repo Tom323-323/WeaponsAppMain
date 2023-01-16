@@ -41,7 +41,7 @@ class FragmentMainMenu: Fragment(R.layout.fragment_main_menu_land), View.OnClick
 
     private fun selectLand(id: Int){
         findNavController().navigate(R.id.action_fragmentMainMenu_to_fragmentSelectWeapons,
-        bundleOf(FragmentType.ID_LAND to id))
+        bundleOf(FragmentSelectWeapons.ID_LAND to id))
     }
 
     override fun onDestroyView() {

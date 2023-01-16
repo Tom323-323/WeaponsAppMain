@@ -37,7 +37,7 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
         Log.e("AAA","Select weapons: $id_land")
 
         // ReccyclerView___________________________________________________
-        val rv = binding!!.rvTypeWeapons
+        val rv = binding!!.recyclerViewWeapons
         rv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         rv.setHasFixedSize(true)
         rv.adapter = AdapterFragmentSelectWeapons(dataWeapons as ArrayList<WeaponsModel>,this, id_land)
