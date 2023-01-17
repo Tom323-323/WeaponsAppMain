@@ -11,9 +11,6 @@ class UseCaseLoadWeapons: AppCompatActivity() {
 
     fun loadWeapons(id:Int): MutableList<WeaponsModel> {
 
-        /*val title_arr = resources.getStringArray(R.array.land_title)
-        val content_arr = resources.getStringArray(R.array.land_content)*/
-
         val title_arr = arrayListOf<String>("grtgergt","gfaerger","aergaerg","grtsfSEfgergt","gfaesefserger","aergaesferg")
         val content_arr = arrayListOf<String>("grtsfSEfgergt","gfaesefserger","aergaesferg","grtsfSEfgergt","gfaesefserger","aergaesferg")
 
@@ -74,17 +71,17 @@ class UseCaseLoadWeapons: AppCompatActivity() {
             R.drawable.img_main_fin,
             R.drawable.img_main_jp)
 
-        var array = arrayListOf<Int>()
-        when(id){
-            0 ->  array = img_arr_weapons_0
-            1 ->  array = img_arr_weapons_1
-            2 ->  array = img_arr_weapons_2
-            3 ->  array = img_arr_weapons_3
-            4 ->  array = img_arr_weapons_4
-            5 ->  array = img_arr_weapons_5
-            6 ->  array = img_arr_weapons_6
-            7 ->  array = img_arr_weapons_7
-        }
+        val arrayMain = arrayListOf(img_arr_weapons_0,
+                                    img_arr_weapons_1,
+                                    img_arr_weapons_2,
+                                    img_arr_weapons_3,
+                                    img_arr_weapons_4,
+                                    img_arr_weapons_5,
+                                    img_arr_weapons_6,
+                                    img_arr_weapons_7)
+
+        val array = arrayMain[id]
+
         for(i in 0..5){dataWeapons.add(WeaponsModel(id = id, title = title_arr[i], img = array[i], content = content_arr[i]))}
         return dataWeapons
     }
