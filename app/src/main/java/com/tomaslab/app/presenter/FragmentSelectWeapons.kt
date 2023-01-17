@@ -2,7 +2,9 @@ package com.tomaslab.app.presenter
 
 import android.os.Bundle
 import android.os.Handler
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
@@ -13,8 +15,8 @@ import androidx.recyclerview.widget.SnapHelper
 import com.tomaslab.app.R
 import com.tomaslab.app.databinding.FragmentSelectWeaponsLandBinding
 import com.tomaslab.app.domain.AdapterFragmentSelectWeapons
-import com.tomaslab.app.domain.UseCaseLandManager
 import com.tomaslab.app.domain.UseCaseLoadWeapons
+
 import com.tomaslab.app.domain.model.WeaponsModel
 
 class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
@@ -22,9 +24,6 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
     private var binding: FragmentSelectWeaponsLandBinding? = null
 
     //val dataWeapons = mutableListOf<WeaponsModel>()
-
-    val useCaseLoadWeapons = UseCaseLoadWeapons()
-
 
     companion object {
          const val ID_LAND = "id_land"
@@ -37,11 +36,8 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
         val id_land = requireArguments().getInt(ID_LAND) // Get argument from FragmentMainMenu
 
 
-        val dataWeapons = useCaseLoadWeapons.loadWeapons(id_land)
-
-
         landManager(id_land) // Load headline and content.
-        //loadWeapons(id_land)
+        val dataWeapons = loadWeapons(id_land)
 
 
         // ReccyclerView___________________________________________________
@@ -83,6 +79,7 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
             }
         })
         // Animation recycler view__________________________________________________________________
+
     }
 
     private fun landManager(id: Int){
@@ -100,8 +97,13 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
 
     }
 
-/*    private fun loadWeapons(id: Int){
-        val img_arr_weapons_0 = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
+    private fun loadWeapons(id: Int): MutableList<WeaponsModel> {
+
+        val useCaseLoadWeapons = UseCaseLoadWeapons()
+        val dataWeapons = useCaseLoadWeapons.loadWeapons(id)
+        return dataWeapons
+
+/*        val img_arr_weapons_0 = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
             R.drawable.img_main_jp)
         val img_arr_weapons_1 = arrayListOf<Int>(R.drawable.img_german_pistol,R.drawable.img_pistol_usa,R.drawable.img_ussr_pistol,R.drawable.img_main_usa,R.drawable.img_main_fin,
             R.drawable.img_main_jp)
@@ -132,8 +134,8 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
                 6 ->  array = img_arr_weapons_6
                 7 ->  array = img_arr_weapons_7
         }
-            for(i in 0..5){dataWeapons.add(WeaponsModel(id = id, title = title_arr[i], img = array[i], content = content_arr[i]))}
-    }*/
+            for(i in 0..5){dataWeapons.add(WeaponsModel(id = id, title = title_arr[i], img = array[i], content = content_arr[i]))}*/
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

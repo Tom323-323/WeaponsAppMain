@@ -7,10 +7,16 @@ import com.tomaslab.app.domain.model.WeaponsModel
 class UseCaseLoadWeapons: AppCompatActivity() {
     val dataWeapons = mutableListOf<WeaponsModel>()
 
-    val title_arr = resources.getStringArray(R.array.land_title)
-    val content_arr = resources.getStringArray(R.array.land_content)
+
 
     fun loadWeapons(id:Int): MutableList<WeaponsModel> {
+
+        /*val title_arr = resources.getStringArray(R.array.land_title)
+        val content_arr = resources.getStringArray(R.array.land_content)*/
+
+        val title_arr = arrayListOf<String>("grtgergt","gfaerger","aergaerg","grtsfSEfgergt","gfaesefserger","aergaesferg")
+        val content_arr = arrayListOf<String>("grtsfSEfgergt","gfaesefserger","aergaesferg","grtsfSEfgergt","gfaesefserger","aergaesferg")
+
         val img_arr_weapons_0 = arrayListOf<Int>(
             R.drawable.img_german_pistol,
             R.drawable.img_pistol_usa,
