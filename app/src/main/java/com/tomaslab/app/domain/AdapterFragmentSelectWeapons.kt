@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.tomaslab.app.R
 import com.tomaslab.app.presenter.FragmentWeapons
-import com.tomaslab.app.presenter.model.WeaponsModel
+import com.tomaslab.app.domain.model.WeaponsModel
 
 class AdapterFragmentSelectWeapons(private val dataWeapons: ArrayList<WeaponsModel>, val parentFragment: Fragment, val id_land: Int) : RecyclerView.Adapter<AdapterFragmentSelectWeapons.ViewHolder>() {
 

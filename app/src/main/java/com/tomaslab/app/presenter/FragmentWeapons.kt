@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.tomaslab.app.R
 import com.tomaslab.app.databinding.FragmentSelectTypeWeaponsBinding
 import com.tomaslab.app.domain.AdapterFragmentSelectTypeWeapons
-import com.tomaslab.app.presenter.model.WeaponsModelType
+import com.tomaslab.app.domain.model.WeaponsModelType
 
 class FragmentWeapons: Fragment(R.layout.fragment_select_type_weapons) {
 
@@ -27,9 +27,11 @@ class FragmentWeapons: Fragment(R.layout.fragment_select_type_weapons) {
 
         val id_type = requireArguments().getInt(ID_TYPE) // Get argument from FragmentSelectWeapons
         val id_land = requireArguments().getInt(ID_LAND)
+
         landManager(id_land)
 
-        loadWeapons(id_type.toString())// need fix!!!!!!!!!!!!!!!!
+        loadWeapons(id_land = id_land,
+                    id_type = id_type)
 
         //RecyclerView________________________________
         val rv = binding!!.rvTypeWeapons
@@ -41,17 +43,19 @@ class FragmentWeapons: Fragment(R.layout.fragment_select_type_weapons) {
 
     }
 
-    private fun loadWeapons(id: String){//need fix!!!!!!!!!!!!!
+    private fun loadWeapons(id_land: Int, id_type: Int){
 
         for(i in 0..5){
-            dataWeaponsType.add(WeaponsModelType(
+            dataWeaponsType.add(
+                WeaponsModelType(
                 id = "",
                 name ="Maschinenpistole MP-40",
                 title = i.toString(),
-                calibr = id,
+                calibr = id_land.toString(),
                 year = "Year: 1938",
                 men = "Designer: Hugo Schmeisser",
-                image = 77))
+                image = 77)
+            )
         }
     }
 
