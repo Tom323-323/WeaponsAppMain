@@ -10,6 +10,16 @@
     <string name="title_img">recycler_viev_img_select</string>
     <string name="read_more">read more</string>
 
+
+    <string name="land_0">ВЕЛИКОБРИТАНИЯ</string>
+    <string name="land_1">ФРАНЦИЯ</string>
+    <string name="land_2">ГЕРМАНИЯ</string>
+    <string name="land_3">США</string>
+    <string name="land_4">ФИНЛЯНДИЯ</string>
+    <string name="land_5">ЯПОНИЯ</string>
+    <string name="land_6">РОССИЯ</string>
+    <string name="land_7">ИТАЛИЯ</string>
+
     <array name="splash_screen_text_content">
         <item>"The good people of this world are very far from being satisfied with each other and my arms are the best peacemakers"\n– Samuel Colt</item>
         <item>"Я не знаю, каким оружием будет вестись Третья мировая война, но Четвёртая — палками и камнями"\n– Альберт Эйнштейн</item>
