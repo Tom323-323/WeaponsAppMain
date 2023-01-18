@@ -1,15 +1,17 @@
 package com.tomaslab.app.domain
 
-import androidx.appcompat.app.AppCompatActivity
+
+import android.content.Context
 import com.tomaslab.app.R
 import com.tomaslab.app.domain.model.WeaponsModel
+import com.tomaslab.app.presenter.FragmentSelectWeapons
 
-class UseCaseLoadWeapons: AppCompatActivity() {
+class UseCaseLoadWeapons (){
     val dataWeapons = mutableListOf<WeaponsModel>()
 
 
 
-    fun loadWeapons(id:Int): MutableList<WeaponsModel> {
+    fun loadWeapons(id:Int, cont: Context): MutableList<WeaponsModel> {
 
         val title_arr = arrayListOf<Int>(R.string.land_0,R.string.land_1,R.string.land_2,R.string.land_3,R.string.land_4,R.string.land_5,R.string.land_6,R.string.land_7,)
         val content_arr = arrayListOf<String>("grtsfSEfgergt","gfaesefserger","aergaesferg","grtsfSEfgergt","gfaesefserger","aergaesferg")
@@ -82,7 +84,8 @@ class UseCaseLoadWeapons: AppCompatActivity() {
 
         val array = arrayMain[id]
 
-        for(i in 0..5){dataWeapons.add(WeaponsModel(id = id, title = title_arr[i].toString(), img = array[i], content = content_arr[i]))}
+
+        for(i in 0..5){dataWeapons.add(WeaponsModel(id = id, title = cont.getString(title_arr[i]), img = array[i], content = content_arr[i]))}
         return dataWeapons
     }
 

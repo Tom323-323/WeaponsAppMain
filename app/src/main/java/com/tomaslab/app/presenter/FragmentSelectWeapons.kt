@@ -1,10 +1,9 @@
 package com.tomaslab.app.presenter
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
@@ -38,7 +37,7 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
 
         landManager(id_land) // Load headline and content.
 
-        val dataWeapons = UseCaseLoadWeapons().loadWeapons(id_land)
+        val dataWeapons = UseCaseLoadWeapons().loadWeapons(id_land,requireContext())
 
 
         // ReccyclerView___________________________________________________
