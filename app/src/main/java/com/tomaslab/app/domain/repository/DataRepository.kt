@@ -7,4 +7,6 @@ interface DataRepository {
 
     fun loadWeaponsFromData(id: Int, context: Context): MutableList<WeaponsModel>
 
+    fun landManager (idLand: Int, context: Context): Pair<Int,String>
+
 }

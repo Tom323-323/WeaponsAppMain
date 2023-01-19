@@ -1,6 +1,5 @@
 package com.tomaslab.app.presenter
 
-import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -16,9 +15,8 @@ import com.tomaslab.app.data.DataRepository.DataRepositoryImp
 import com.tomaslab.app.databinding.FragmentSelectWeaponsLandBinding
 import com.tomaslab.app.domain.AdapterFragmentSelectWeapons
 import com.tomaslab.app.domain.UseCaseLoadWeapons
-
 import com.tomaslab.app.domain.model.WeaponsModel
-import com.tomaslab.app.domain.repository.DataRepository
+
 
 class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
 
@@ -36,11 +34,10 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
 
         val id_land = requireArguments().getInt(ID_LAND) // Get argument from FragmentMainMenu
 
-
-        landManager(id_land) // Load headline and content.
-
         val dataWeapons = UseCaseLoadWeapons(dataRepository = dataRepository).loadWeapons(id_land,requireContext()) // UseCase LoadWeapons
+        val loadPair = UseCaseLoadWeapons(dataRepository = dataRepository).loadLand(id_land,requireContext())
 
+        landManager(loadPair) // Load headline and content.
 
         // ReccyclerView___________________________________________________
         val rv = binding!!.recyclerViewWeapons
@@ -84,18 +81,20 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
 
     }
 
-    private fun landManager(id: Int){
+    private fun landManager(id: Pair<Int, String>){
+
         val img_array_land = arrayListOf<Int>(R.drawable.img_main_gb,R.drawable.img_main_fr,R.drawable.img_main_ger,R.drawable.img_main_usa,R.drawable.img_main_fin,
             R.drawable.img_main_jp,R.drawable.img_main_ussr,R.drawable.img_main_ital)
-        val title_array_land = resources.getStringArray(R.array.land_name_title)
+//        val title_array_land = resources.getStringArray(R.array.land_name_title)
 
-        if(id == 0) {
+        if(id.first == 0) {
             binding?.titleLand?.textSize = 22F
-            binding?.titleLand?.text = title_array_land[id]} // Text size from long land - Great Brit
+            binding?.titleLand?.text = id.second
+        } // Text size from long land - Great Brit
         else {
-            binding?.titleLand?.text = title_array_land[id]} // Set title text in Head Line
+            binding?.titleLand?.text = id.second} // Set title text in Head Line
 
-        binding?.imgLand?.setImageResource(img_array_land[id]) // Set image in Head Line
+        binding?.imgLand?.setImageResource(img_array_land[1]) // Set image in Head Line
 
     }
 

@@ -81,6 +81,18 @@ class DataRepositoryImp: DataRepository {
         val array = arrayMain[id]
 
         for(i in 0..5){dataWeapons.add(WeaponsModel(id = id, title = title_arr[i], img = array[i], content = content_arr[i]))}
-        return dataWeapons
+        return dataWeapons //NEED add in this fun landManager
+    }
+
+    override fun landManager(idLand: Int,context: Context): Pair<Int, String> {
+
+        val img_array_land = arrayListOf<Int>(R.drawable.img_main_gb,R.drawable.img_main_fr,R.drawable.img_main_ger,R.drawable.img_main_usa,R.drawable.img_main_fin,
+            R.drawable.img_main_jp,R.drawable.img_main_ussr,R.drawable.img_main_ital)
+        val title_array_land = context.resources.getStringArray(R.array.land_name_title)
+
+        val imageLand = img_array_land[idLand]
+        val titleLand = title_array_land[idLand]
+
+        return Pair(imageLand,titleLand)
     }
 }
