@@ -12,17 +12,19 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import com.tomaslab.app.R
+import com.tomaslab.app.data.DataRepository.DataRepositoryImp
 import com.tomaslab.app.databinding.FragmentSelectWeaponsLandBinding
 import com.tomaslab.app.domain.AdapterFragmentSelectWeapons
 import com.tomaslab.app.domain.UseCaseLoadWeapons
 
 import com.tomaslab.app.domain.model.WeaponsModel
+import com.tomaslab.app.domain.repository.DataRepository
 
 class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
 
     private var binding: FragmentSelectWeaponsLandBinding? = null
 
-    //val dataWeapons = mutableListOf<WeaponsModel>()
+    private val dataRepository = DataRepositoryImp()
 
     companion object {
          const val ID_LAND = "id_land"
@@ -37,7 +39,7 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
 
         landManager(id_land) // Load headline and content.
 
-        val dataWeapons = UseCaseLoadWeapons().loadWeapons(id_land,requireContext())
+        val dataWeapons = UseCaseLoadWeapons(dataRepository = dataRepository).loadWeapons(id_land,requireContext()) // UseCase LoadWeapons
 
 
         // ReccyclerView___________________________________________________
