@@ -94,7 +94,7 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
         else {
             binding?.titleLand?.text = id.second} // Set title text in Head Line
 
-        binding?.imgLand?.setImageResource(img_array_land[1]) // Set image in Head Line
+        binding?.imgLand?.setImageResource(img_array_land[1]) // Set image in Head Line, TEST INDEX 1!!!!!!!!!!!!!!
 
     }
 
