@@ -1,20 +1,21 @@
 package com.tomaslab.app.presenter
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tomaslab.app.R
+import com.tomaslab.app.data.DataRepository.DataRepositoryImp
 import com.tomaslab.app.databinding.FragmentSelectTypeWeaponsBinding
 import com.tomaslab.app.domain.AdapterFragmentSelectTypeWeapons
+import com.tomaslab.app.domain.UseCaseLoadWeapons
 import com.tomaslab.app.domain.model.WeaponsModelType
 
 class FragmentWeapons: Fragment(R.layout.fragment_select_type_weapons) {
-
     private var binding: FragmentSelectTypeWeaponsBinding? = null
 
     private val dataWeaponsType = mutableListOf<WeaponsModelType>()
+    private val dataRepository = DataRepositoryImp()
 
     companion object {
         const val ID_TYPE = "id_type"
@@ -28,10 +29,9 @@ class FragmentWeapons: Fragment(R.layout.fragment_select_type_weapons) {
         val id_type = requireArguments().getInt(ID_TYPE) // Get argument from FragmentSelectWeapons
         val id_land = requireArguments().getInt(ID_LAND)
 
-        landManager(id_land)
+        landManager(UseCaseLoadWeapons(dataRepository = dataRepository).loadLand(id_land,requireContext()))
 
-        loadWeapons(id_land = id_land,
-                    id_type = id_type)
+        loadWeapons(id_land = id_land,id_type = id_type)
 
         //RecyclerView________________________________
         val rv = binding!!.rvTypeWeapons
@@ -43,7 +43,7 @@ class FragmentWeapons: Fragment(R.layout.fragment_select_type_weapons) {
 
     }
 
-    private fun loadWeapons(id_land: Int, id_type: Int){
+    private fun loadWeapons(id_land: Int, id_type: Int){       //Need fix this fun. Send fun to domain layer!!!!!!!!!!!!!!!!!!!!!!!!!! and data in data layer..
 
         for(i in 0..5){
             dataWeaponsType.add(
@@ -66,20 +66,10 @@ class FragmentWeapons: Fragment(R.layout.fragment_select_type_weapons) {
     }
 
     // Set Title in activity (Headline)
-    private fun landManager(id: Int){
-        val img_array_land = arrayListOf<Int>(R.drawable.img_main_gb,R.drawable.img_main_fr,R.drawable.img_main_ger,R.drawable.img_main_usa,R.drawable.img_main_fin,
-            R.drawable.img_main_jp,R.drawable.img_main_ussr,R.drawable.img_main_ital)
-
-        val title_array_land = resources.getStringArray(R.array.land_name_title)
-
-        if(id == 0) {
-            binding?.titleLand?.textSize = 22F
-            binding?.titleLand?.text = title_array_land[id]} // Text size from long text land - Great Brit
-        else {
-            binding?.titleLand?.text = title_array_land[id]} // Set title text in Head Line
-
-        binding?.imgLand?.setImageResource(img_array_land[id]) // Set image in Head Line
-
+    private fun landManager(id: Pair<Int, String>){
+        if(id.second == getString(R.string.land_0)) {binding?.titleLand?.textSize = 22F} // Text size from long land - Great Brit
+        binding?.titleLand?.text = id.second // Set title text in Head Line
+        binding?.imgLand?.setImageResource(id.first)
     }
 
 
