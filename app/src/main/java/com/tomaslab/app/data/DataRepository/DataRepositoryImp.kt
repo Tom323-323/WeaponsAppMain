@@ -61,7 +61,7 @@ class DataRepositoryImp: DataRepository {
             R.drawable.img_main_usa,
             R.drawable.img_main_fin,
             R.drawable.img_main_jp)
-        val img_arr_weapons_7 = arrayListOf<Int>(
+        val img_arr_weapons_7 = arrayListOf(
             R.drawable.img_german_pistol,
             R.drawable.img_pistol_usa,
             R.drawable.img_ussr_pistol,

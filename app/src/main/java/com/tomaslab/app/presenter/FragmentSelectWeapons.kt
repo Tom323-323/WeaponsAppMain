@@ -35,9 +35,7 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
         val id_land = requireArguments().getInt(ID_LAND) // Get argument from FragmentMainMenu
 
         val dataWeapons = UseCaseLoadWeapons(dataRepository = dataRepository).loadWeapons(id_land,requireContext()) // UseCase LoadWeapons
-        val loadPair = UseCaseLoadWeapons(dataRepository = dataRepository).loadLand(id_land,requireContext())
-
-        landManager(loadPair) // Load headline and content.
+        landManager(UseCaseLoadWeapons(dataRepository = dataRepository).loadLand(id_land,requireContext())) // Load headline and content.
 
         // ReccyclerView___________________________________________________
         val rv = binding!!.recyclerViewWeapons
@@ -72,36 +70,21 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
                         .setInterpolator(AccelerateInterpolator()).start()
                 }
             }
-
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
             }
         })
         // Animation recycler view__________________________________________________________________
-
     }
 
     private fun landManager(id: Pair<Int, String>){
-
-        val img_array_land = arrayListOf<Int>(R.drawable.img_main_gb,R.drawable.img_main_fr,R.drawable.img_main_ger,R.drawable.img_main_usa,R.drawable.img_main_fin,
-            R.drawable.img_main_jp,R.drawable.img_main_ussr,R.drawable.img_main_ital)
-//        val title_array_land = resources.getStringArray(R.array.land_name_title)
-
-        if(id.first == 0) {
-            binding?.titleLand?.textSize = 22F
-            binding?.titleLand?.text = id.second
-        } // Text size from long land - Great Brit
-        else {
-            binding?.titleLand?.text = id.second} // Set title text in Head Line
-
-        binding?.imgLand?.setImageResource(img_array_land[1]) // Set image in Head Line, TEST INDEX 1!!!!!!!!!!!!!!
-
+        if(id.second == getString(R.string.land_0)) {binding?.titleLand?.textSize = 22F} // Text size from long land - Great Brit
+        binding?.titleLand?.text = id.second // Set title text in Head Line
+        binding?.imgLand?.setImageResource(id.first)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
-
     }
-
 }
