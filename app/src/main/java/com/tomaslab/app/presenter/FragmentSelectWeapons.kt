@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import com.tomaslab.app.R
 import com.tomaslab.app.data.DataRepository.DataRepositoryImp
+import com.tomaslab.app.data.storage.CollectionsDataStorage
 import com.tomaslab.app.databinding.FragmentSelectWeaponsLandBinding
 import com.tomaslab.app.domain.AdapterFragmentSelectWeapons
 import com.tomaslab.app.domain.UseCaseLoadWeapons
@@ -22,7 +23,7 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
 
     private var binding: FragmentSelectWeaponsLandBinding? = null
 
-    private val dataRepository = DataRepositoryImp()
+    private val dataRepository = DataRepositoryImp(dataStorage = CollectionsDataStorage())
 
     companion object {
          const val ID_LAND = "id_land"

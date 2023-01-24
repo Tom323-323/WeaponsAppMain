@@ -63,7 +63,8 @@ class CollectionsDataStorage : DataStorage{
         R.drawable.img_main_fin,
         R.drawable.img_main_jp)
 
-    val arrayMain = arrayListOf(img_arr_weapons_0,
+    val arrayMain = arrayListOf(
+        img_arr_weapons_0,
         img_arr_weapons_1,
         img_arr_weapons_2,
         img_arr_weapons_3,
@@ -78,7 +79,7 @@ class CollectionsDataStorage : DataStorage{
         val content_arr = context.resources.getStringArray(R.array.land_content)
         val array = arrayMain[id]
 
-        for(i in 0..arrayMain.size){dataWeapons.add(WeaponsModel(id = id, title = title_arr[i], img = array[i], content = content_arr[i]))}
+        for(i in 0..5){dataWeapons.add(WeaponsModel(id = id, title = title_arr[i], img = array[i], content = content_arr[i]))}
         return dataWeapons
     }
 

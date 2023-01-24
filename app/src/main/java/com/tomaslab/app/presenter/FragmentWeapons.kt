@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tomaslab.app.R
 import com.tomaslab.app.data.DataRepository.DataRepositoryImp
+import com.tomaslab.app.data.storage.CollectionsDataStorage
 import com.tomaslab.app.databinding.FragmentSelectTypeWeaponsBinding
 import com.tomaslab.app.domain.AdapterFragmentSelectTypeWeapons
 import com.tomaslab.app.domain.UseCaseLoadWeapons
@@ -15,7 +16,7 @@ class FragmentWeapons: Fragment(R.layout.fragment_select_type_weapons) {
     private var binding: FragmentSelectTypeWeaponsBinding? = null
 
     private val dataWeaponsType = mutableListOf<WeaponsModelType>()
-    private val dataRepository = DataRepositoryImp()
+    private val dataRepository = DataRepositoryImp(dataStorage = CollectionsDataStorage())
 
     companion object {
         const val ID_TYPE = "id_type"
@@ -31,7 +32,7 @@ class FragmentWeapons: Fragment(R.layout.fragment_select_type_weapons) {
 
         landManager(UseCaseLoadWeapons(dataRepository = dataRepository).loadLand(id_land,requireContext()))
 
-        loadWeapons(id_land = id_land,id_type = id_type)
+        loadWeapons(id_land = id_land,id_type = id_type) // Need fix!!!!!
 
         //RecyclerView________________________________
         val rv = binding!!.rvTypeWeapons
@@ -59,11 +60,6 @@ class FragmentWeapons: Fragment(R.layout.fragment_select_type_weapons) {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
-        dataWeaponsType.clear()
-    }
 
     // Set Title in activity (Headline)
     private fun landManager(id: Pair<Int, String>){
@@ -72,6 +68,10 @@ class FragmentWeapons: Fragment(R.layout.fragment_select_type_weapons) {
         binding?.imgLand?.setImageResource(id.first)
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+        dataWeaponsType.clear()
+    }
 
 }

@@ -13,6 +13,6 @@ class DataRepositoryImp(private val dataStorage: DataStorage): DataRepository {
     }
 
     override fun landManager(idLand: Int,context: Context): Pair<Int, String> {
-
+        return dataStorage.loadTitleLand(idLand = idLand, context = context)
     }
 }
