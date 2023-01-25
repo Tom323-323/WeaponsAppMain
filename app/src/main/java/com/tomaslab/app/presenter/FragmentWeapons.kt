@@ -61,7 +61,7 @@ class FragmentWeapons: Fragment(R.layout.fragment_select_type_weapons) {
     }
 
 
-    // Set Title in activity (Headline)
+    // Set Title and ImageLand in fragment (Headline)
     private fun landManager(id: Pair<Int, String>){
         if(id.second == getString(R.string.land_0)) {binding?.titleLand?.textSize = 22F} // Text size from long land - Great Brit
         binding?.titleLand?.text = id.second // Set title text in Head Line
