@@ -18,6 +18,6 @@ class DataRepositoryImp(private val dataStorage: DataStorage): DataRepository {
     }
 
     override fun loadTypeWeapons(id_land: Int, id_type: Int): MutableList<WeaponsModelType> {
-        TODO("Not yet implemented")
+        return dataStorage.loadTypeWeapons(id_land = id_land,id_type = id_type)
     }
 }

@@ -3,6 +3,7 @@ package com.tomaslab.app.data.storage
 import android.content.Context
 import com.tomaslab.app.R
 import com.tomaslab.app.domain.model.WeaponsModel
+import com.tomaslab.app.domain.model.WeaponsModelType
 
 class CollectionsDataStorage (): DataStorage{
 
@@ -88,6 +89,23 @@ class CollectionsDataStorage (): DataStorage{
             R.drawable.img_main_jp,R.drawable.img_main_ussr,R.drawable.img_main_ital)
         val title_array_land = context.resources.getStringArray(R.array.land_name_title)
         return Pair(img_array_land[idLand],title_array_land[idLand])
+    }
+
+    override fun loadTypeWeapons(id_land: Int, id_type: Int): MutableList<WeaponsModelType> {
+        val dataWeaponsType = mutableListOf<WeaponsModelType>()
+        for(i in 0..5){
+            dataWeaponsType.add(
+                WeaponsModelType(
+                    id = "",
+                    name ="Maschinenpistole MP-40",
+                    title = i.toString(),
+                    calibr = id_land.toString(),
+                    year = id_type.toString(),
+                    men = "Designer: Hugo Schmeisser",
+                    image = 77)
+            )
+        }
+        return dataWeaponsType
     }
 
 

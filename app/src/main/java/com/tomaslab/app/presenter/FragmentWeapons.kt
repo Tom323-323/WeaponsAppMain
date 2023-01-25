@@ -9,20 +9,19 @@ import com.tomaslab.app.data.DataRepository.DataRepositoryImp
 import com.tomaslab.app.data.storage.CollectionsDataStorage
 import com.tomaslab.app.databinding.FragmentSelectTypeWeaponsBinding
 import com.tomaslab.app.domain.AdapterFragmentSelectTypeWeapons
+import com.tomaslab.app.domain.UseCaseLoadTypeWeapons
 import com.tomaslab.app.domain.UseCaseLoadWeapons
 import com.tomaslab.app.domain.model.WeaponsModelType
+
 
 class FragmentWeapons: Fragment(R.layout.fragment_select_type_weapons) {
     private var binding: FragmentSelectTypeWeaponsBinding? = null
 
-    private val dataWeaponsType = mutableListOf<WeaponsModelType>()
     private val dataRepository = DataRepositoryImp(dataStorage = CollectionsDataStorage())
-
     companion object {
         const val ID_TYPE = "id_type"
         const val ID_LAND = "id_land"
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSelectTypeWeaponsBinding.bind(view)
@@ -32,7 +31,7 @@ class FragmentWeapons: Fragment(R.layout.fragment_select_type_weapons) {
 
         landManager(UseCaseLoadWeapons(dataRepository = dataRepository).loadLand(id_land,requireContext()))
 
-        loadWeapons(id_land = id_land,id_type = id_type) // Need fix!!!!!
+        val dataWeaponsType = UseCaseLoadTypeWeapons(dataRepository = dataRepository).loadTypeWeapons(id_land = id_land, id_type = id_type)
 
         //RecyclerView________________________________
         val rv = binding!!.rvTypeWeapons
@@ -44,23 +43,6 @@ class FragmentWeapons: Fragment(R.layout.fragment_select_type_weapons) {
 
     }
 
-    private fun loadWeapons(id_land: Int, id_type: Int){       //Need fix this fun. Send fun to domain layer!!!!!!!!!!!!!!!!!!!!!!!!!! and data in data layer..
-
-        for(i in 0..5){
-            dataWeaponsType.add(
-                WeaponsModelType(
-                id = "",
-                name ="Maschinenpistole MP-40",
-                title = i.toString(),
-                calibr = id_land.toString(),
-                year = "Year: 1938",
-                men = "Designer: Hugo Schmeisser",
-                image = 77)
-            )
-        }
-    }
-
-
     // Set Title and ImageLand in fragment (Headline)
     private fun landManager(id: Pair<Int, String>){
         if(id.second == getString(R.string.land_0)) {binding?.titleLand?.textSize = 22F} // Text size from long land - Great Brit
@@ -71,7 +53,7 @@ class FragmentWeapons: Fragment(R.layout.fragment_select_type_weapons) {
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
-        dataWeaponsType.clear()
+        //dataWeaponsType.clear()
     }
 
 }

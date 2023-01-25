@@ -1,23 +1,13 @@
 package com.tomaslab.app.domain
 
 import com.tomaslab.app.domain.model.WeaponsModelType
+import com.tomaslab.app.domain.repository.DataRepository
 
-class UseCaseLoadTypeWeapons  {
+class UseCaseLoadTypeWeapons  (private val dataRepository: DataRepository){
 
     fun loadTypeWeapons(id_land: Int, id_type: Int): MutableList<WeaponsModelType>{
-        val dataWeaponsType = mutableListOf <WeaponsModelType>()
-        for(i in 0..5){
-            dataWeaponsType.add(
-                WeaponsModelType(
-                    id = "",
-                    name ="Maschinenpistole MP-40",
-                    title = i.toString(),
-                    calibr = id_land.toString(),
-                    year = "Year: 1938",
-                    men = "Designer: Hugo Schmeisser",
-                    image = 77)
-            )
-        }
-        return dataWeaponsType
+
+        return dataRepository.loadTypeWeapons(id_land = id_land, id_type = id_type)
+
     }
 }
