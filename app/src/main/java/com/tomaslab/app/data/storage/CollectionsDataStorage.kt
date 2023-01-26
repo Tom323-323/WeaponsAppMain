@@ -2,71 +2,71 @@ package com.tomaslab.app.data.storage
 
 import android.content.Context
 import com.tomaslab.app.R
-import com.tomaslab.app.domain.model.WeaponsModel
-import com.tomaslab.app.domain.model.WeaponsModelType
+import com.tomaslab.app.data.storage.models.DataModelTypeWeapons
+import com.tomaslab.app.data.storage.models.DataModelWeapons
 
 class CollectionsDataStorage (): DataStorage{
 
-    val img_arr_weapons_0 = arrayListOf<Int>(
-        R.drawable.img_german_pistol,
-        R.drawable.img_pistol_usa,
-        R.drawable.img_ussr_pistol,
-        R.drawable.img_main_usa,
-        R.drawable.img_main_fin,
-        R.drawable.img_main_jp)
-    val img_arr_weapons_1 = arrayListOf<Int>(
-        R.drawable.img_german_pistol,
-        R.drawable.img_pistol_usa,
-        R.drawable.img_ussr_pistol,
-        R.drawable.img_main_usa,
-        R.drawable.img_main_fin,
-        R.drawable.img_main_jp)
-    val img_arr_weapons_2 = arrayListOf<Int>(
-        R.drawable.img_german_pistol,
-        R.drawable.img_pistol_usa,
-        R.drawable.img_ussr_pistol,
-        R.drawable.img_main_usa,
-        R.drawable.img_main_fin,
-        R.drawable.img_main_jp)
-    val img_arr_weapons_3 = arrayListOf<Int>(
-        R.drawable.img_german_pistol,
-        R.drawable.img_pistol_usa,
-        R.drawable.img_ussr_pistol,
-        R.drawable.img_main_usa,
-        R.drawable.img_main_fin,
-        R.drawable.img_main_jp)
-    val img_arr_weapons_4 = arrayListOf<Int>(
-        R.drawable.img_german_pistol,
-        R.drawable.img_pistol_usa,
-        R.drawable.img_ussr_pistol,
-        R.drawable.img_main_usa,
-        R.drawable.img_main_fin,
-        R.drawable.img_main_jp)
-    val img_arr_weapons_5 = arrayListOf<Int>(
-        R.drawable.img_german_pistol,
-        R.drawable.img_pistol_usa,
-        R.drawable.img_ussr_pistol,
-        R.drawable.img_main_usa,
-        R.drawable.img_main_fin,
-        R.drawable.img_main_jp)
-    val img_arr_weapons_6 = arrayListOf<Int>(
-        R.drawable.img_german_pistol,
-        R.drawable.img_pistol_usa,
-        R.drawable.img_ussr_pistol,
-        R.drawable.img_main_usa,
-        R.drawable.img_main_fin,
-        R.drawable.img_main_jp)
-    val img_arr_weapons_7 = arrayListOf(
-        R.drawable.img_german_pistol,
-        R.drawable.img_pistol_usa,
-        R.drawable.img_ussr_pistol,
-        R.drawable.img_main_usa,
-        R.drawable.img_main_fin,
-        R.drawable.img_main_jp)
-
     var array: ArrayList<Int> = arrayListOf()
 
-    override fun loadWeaponsFromData(id: Int, context: Context): MutableList<WeaponsModel> {
+    override fun loadWeaponsFromData(id: Int, context: Context): MutableList<DataModelWeapons> {
+        val img_arr_weapons_0 = arrayListOf<Int>(
+            R.drawable.img_german_pistol,
+            R.drawable.img_pistol_usa,
+            R.drawable.img_ussr_pistol,
+            R.drawable.img_main_usa,
+            R.drawable.img_main_fin,
+            R.drawable.img_main_jp)
+        val img_arr_weapons_1 = arrayListOf<Int>(
+            R.drawable.img_german_pistol,
+            R.drawable.img_pistol_usa,
+            R.drawable.img_ussr_pistol,
+            R.drawable.img_main_usa,
+            R.drawable.img_main_fin,
+            R.drawable.img_main_jp)
+        val img_arr_weapons_2 = arrayListOf<Int>(
+            R.drawable.img_german_pistol,
+            R.drawable.img_pistol_usa,
+            R.drawable.img_ussr_pistol,
+            R.drawable.img_main_usa,
+            R.drawable.img_main_fin,
+            R.drawable.img_main_jp)
+        val img_arr_weapons_3 = arrayListOf<Int>(
+            R.drawable.img_german_pistol,
+            R.drawable.img_pistol_usa,
+            R.drawable.img_ussr_pistol,
+            R.drawable.img_main_usa,
+            R.drawable.img_main_fin,
+            R.drawable.img_main_jp)
+        val img_arr_weapons_4 = arrayListOf<Int>(
+            R.drawable.img_german_pistol,
+            R.drawable.img_pistol_usa,
+            R.drawable.img_ussr_pistol,
+            R.drawable.img_main_usa,
+            R.drawable.img_main_fin,
+            R.drawable.img_main_jp)
+        val img_arr_weapons_5 = arrayListOf<Int>(
+            R.drawable.img_german_pistol,
+            R.drawable.img_pistol_usa,
+            R.drawable.img_ussr_pistol,
+            R.drawable.img_main_usa,
+            R.drawable.img_main_fin,
+            R.drawable.img_main_jp)
+        val img_arr_weapons_6 = arrayListOf<Int>(
+            R.drawable.img_german_pistol,
+            R.drawable.img_pistol_usa,
+            R.drawable.img_ussr_pistol,
+            R.drawable.img_main_usa,
+            R.drawable.img_main_fin,
+            R.drawable.img_main_jp)
+        val img_arr_weapons_7 = arrayListOf(
+            R.drawable.img_german_pistol,
+            R.drawable.img_pistol_usa,
+            R.drawable.img_ussr_pistol,
+            R.drawable.img_main_usa,
+            R.drawable.img_main_fin,
+            R.drawable.img_main_jp)
+
         val title_arr = context.resources.getStringArray(R.array.land_title)
         val content_arr = context.resources.getStringArray(R.array.land_content)
         when(id){
@@ -79,8 +79,8 @@ class CollectionsDataStorage (): DataStorage{
             6 -> array = img_arr_weapons_6
             7 -> array = img_arr_weapons_7
         }
-        val dataWeapons = mutableListOf<WeaponsModel>()
-        for(i in 0..5){dataWeapons.add(WeaponsModel(id = id, title = title_arr[i], img = array[i], content = content_arr[i]))}
+        val dataWeapons = mutableListOf<DataModelWeapons>()
+        for(i in 0..5){dataWeapons.add(DataModelWeapons(id = id, title = title_arr[i], img = array[i], content = content_arr[i]))}
         return dataWeapons
     }
 
@@ -91,11 +91,11 @@ class CollectionsDataStorage (): DataStorage{
         return Pair(img_array_land[idLand],title_array_land[idLand])
     }
 
-    override fun loadTypeWeapons(id_land: Int, id_type: Int): MutableList<WeaponsModelType> {
-        val dataWeaponsType = mutableListOf<WeaponsModelType>()
+    override fun loadTypeWeapons(id_land: Int, id_type: Int): MutableList<DataModelTypeWeapons> {
+        val dataWeaponsType = mutableListOf<DataModelTypeWeapons>()
         for(i in 0..5){
             dataWeaponsType.add(
-                WeaponsModelType(
+                DataModelTypeWeapons(
                     id = "",
                     name ="Maschinenpistole MP-40",
                     title = i.toString(),
