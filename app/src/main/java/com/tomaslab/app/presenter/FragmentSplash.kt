@@ -6,11 +6,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.tomaslab.app.R
 import com.tomaslab.app.databinding.FragmentSplashBinding
+import com.tomaslab.app.domain.UseCaseLoadSplashScreen
 import kotlin.random.Random
 
 class FragmentSplash: Fragment(R.layout.fragment_splash) {
 
     private var binding:FragmentSplashBinding? = null
+    private val useCaseLoadSplashScreen = UseCaseLoadSplashScreen()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -22,8 +24,7 @@ class FragmentSplash: Fragment(R.layout.fragment_splash) {
     }
 
     private fun init(){ // Set random text in SplashScreen
-        val array_content = resources.getStringArray(R.array.splash_screen_text_content)
-        binding?.tvContentSplash?.text = array_content[Random.nextInt(array_content.count())]
+        binding?.tvContentSplash?.text = useCaseLoadSplashScreen.loadSplashScreen(requireContext())
     }
 
     override fun onDestroyView() {
