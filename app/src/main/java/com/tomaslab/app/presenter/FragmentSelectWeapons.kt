@@ -11,19 +11,20 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import com.tomaslab.app.R
-import com.tomaslab.app.data.DataRepository.DataRepositoryImp
-import com.tomaslab.app.data.storage.CollectionsDataStorage
+import com.example.data.data.DataRepository.DataRepositoryImp
+import com.example.data.data.storage.CollectionsDataStorage
 import com.tomaslab.app.databinding.FragmentSelectWeaponsLandBinding
-import com.tomaslab.app.domain.AdapterFragmentSelectWeapons
-import com.tomaslab.app.domain.UseCaseLoadWeapons
-import com.tomaslab.app.domain.model.WeaponsModel
+import com.earmor.domain.domain.AdapterFragmentSelectWeapons
+import com.earmor.domain.domain.UseCaseLoadWeapons
+import com.earmor.domain.domain.model.WeaponsModel
 
 
 class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
 
     private var binding: FragmentSelectWeaponsLandBinding? = null
 
-    private val dataRepository = DataRepositoryImp(dataStorage = CollectionsDataStorage())
+    private val dataRepository =
+        com.example.data.data.DataRepository.DataRepositoryImp(dataStorage = com.example.data.data.storage.CollectionsDataStorage())
 
     companion object {
          const val ID_LAND = "id_land"
@@ -35,14 +36,21 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
 
         val id_land = requireArguments().getInt(ID_LAND) // Get argument from FragmentMainMenu
 
-        val dataWeapons = UseCaseLoadWeapons(dataRepository = dataRepository).loadWeapons(id_land,requireContext()) // UseCase LoadWeapons
-        landManager(UseCaseLoadWeapons(dataRepository = dataRepository).loadLand(id_land,requireContext())) // Load headline and content.
+        val dataWeapons = com.earmor.domain.domain.UseCaseLoadWeapons(dataRepository = dataRepository)
+            .loadWeapons(id_land,requireContext()) // UseCase LoadWeapons
+        landManager(
+            com.earmor.domain.domain.UseCaseLoadWeapons(dataRepository = dataRepository)
+                .loadLand(id_land,requireContext())) // Load headline and content.
 
         // ReccyclerView___________________________________________________
         val rv = binding!!.recyclerViewWeapons
         rv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         rv.setHasFixedSize(true)
-        rv.adapter = AdapterFragmentSelectWeapons(dataWeapons as ArrayList<WeaponsModel>,this, id_land)
+        rv.adapter = com.earmor.domain.domain.AdapterFragmentSelectWeapons(
+            dataWeapons as ArrayList<com.earmor.domain.domain.model.WeaponsModel>,
+            this,
+            id_land
+        )
         //_________________________________________________________________
 
         // Animation recycler view__________________________________________________________________

@@ -6,13 +6,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.tomaslab.app.R
 import com.tomaslab.app.databinding.FragmentSplashBinding
-import com.tomaslab.app.domain.UseCaseLoadSplashScreen
+import com.earmor.domain.domain.UseCaseLoadSplashScreen
 import kotlin.random.Random
 
 class FragmentSplash: Fragment(R.layout.fragment_splash) {
 
     private var binding:FragmentSplashBinding? = null
-    private val useCaseLoadSplashScreen = UseCaseLoadSplashScreen()
+    private val useCaseLoadSplashScreen = com.earmor.domain.domain.UseCaseLoadSplashScreen()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
