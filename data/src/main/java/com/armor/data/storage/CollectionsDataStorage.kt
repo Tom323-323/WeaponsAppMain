@@ -1,9 +1,9 @@
-package com.armor.data.data.storage
+package com.armor.data.datas.storage
 
 import android.content.Context
 import com.tomaslab.app.R
-import com.armor.data.data.storage.models.DataModelTypeWeapons
-import com.armor.data.data.storage.models.DataModelWeapons
+import com.armor.data.datas.storage.models.DataModelTypeWeapons
+import com.armor.data.datas.storage.models.DataModelWeapons
 
 class CollectionsDataStorage (): DataStorage {
 

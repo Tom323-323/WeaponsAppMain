@@ -1,7 +1,7 @@
-package com.armor.data.data.DataRepository
+package com.armor.data.datas.DataRepository
 
 import android.content.Context
-import com.armor.data.data.storage.DataStorage
+import com.armor.data.datas.storage.DataStorage
 import com.tomaslab.app.domain.repository.DataRepository
 import com.tomaslab.app.domain.model.WeaponsModel
 import com.tomaslab.app.domain.model.WeaponsModelType

@@ -1,4 +1,4 @@
-package com.armor.data.data.storage.models
+package com.armor.data.datas.storage.models
 
 class DataModelTypeWeapons(val id: String,
                            val name: String,

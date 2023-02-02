@@ -5,8 +5,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tomaslab.app.R
-import com.example.data.data.DataRepository.DataRepositoryImp
-import com.example.data.data.storage.CollectionsDataStorage
+import com.armor.data.data.DataRepository.DataRepositoryImp
+import com.armor.data.data.storage.CollectionsDataStorage
 import com.tomaslab.app.databinding.FragmentSelectTypeWeaponsBinding
 import com.earmor.domain.domain.AdapterFragmentSelectTypeWeapons
 import com.earmor.domain.domain.UseCaseLoadTypeWeapons
@@ -18,7 +18,7 @@ class FragmentWeapons: Fragment(R.layout.fragment_select_type_weapons) {
     private var binding: FragmentSelectTypeWeaponsBinding? = null
 
     private val dataRepository =
-        com.example.data.data.DataRepository.DataRepositoryImp(dataStorage = com.example.data.data.storage.CollectionsDataStorage())
+        com.armor.data.data.DataRepository.DataRepositoryImp(dataStorage = com.armor.data.data.storage.CollectionsDataStorage())
     companion object {
         const val ID_TYPE = "id_type"
         const val ID_LAND = "id_land"

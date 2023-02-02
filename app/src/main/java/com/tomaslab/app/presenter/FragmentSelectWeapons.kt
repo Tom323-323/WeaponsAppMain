@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import com.tomaslab.app.R
-import com.example.data.data.DataRepository.DataRepositoryImp
-import com.example.data.data.storage.CollectionsDataStorage
+import com.armor.data.datas.DataRepository.DataRepositoryImp
+import com.armor.data.datas.storage.CollectionsDataStorage
 import com.tomaslab.app.databinding.FragmentSelectWeaponsLandBinding
 import com.earmor.domain.domain.AdapterFragmentSelectWeapons
 import com.earmor.domain.domain.UseCaseLoadWeapons
@@ -24,7 +24,7 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
     private var binding: FragmentSelectWeaponsLandBinding? = null
 
     private val dataRepository =
-        com.example.data.data.DataRepository.DataRepositoryImp(dataStorage = com.example.data.data.storage.CollectionsDataStorage())
+        com.armor.data.DataRepository.DataRepositoryImp(dataStorage = com.armor.data.storage.CollectionsDataStorage())
 
     companion object {
          const val ID_LAND = "id_land"
@@ -46,8 +46,8 @@ class FragmentSelectWeapons: Fragment(R.layout.fragment_select_weapons_land) {
         val rv = binding!!.recyclerViewWeapons
         rv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         rv.setHasFixedSize(true)
-        rv.adapter = com.earmor.domain.domain.AdapterFragmentSelectWeapons(
-            dataWeapons as ArrayList<com.earmor.domain.domain.model.WeaponsModel>,
+        rv.adapter = com.armor.domain.AdapterFragmentSelectWeapons(
+            dataWeapons as ArrayList<com.armor.domain.model.WeaponsModel>,
             this,
             id_land
         )

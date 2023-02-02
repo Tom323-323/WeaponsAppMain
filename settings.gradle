@@ -15,6 +15,5 @@ dependencyResolutionManagement {
 rootProject.name = "Armor"
 include ':app'
 
-include ':mylibrary'
 include ':data'
 include ':domain'
